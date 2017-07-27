@@ -1,0 +1,23 @@
+{# surchage des formulaires twig #}
+
+{%- block form_widget -%}
+{% endblock form_widget %}
+
+{%- block form_row -%}
+    <div>
+        {{- form_label(form) -}}
+        {# {{- form_errors(form) -}} #}
+        {{- form_widget(form) -}}
+    </div>
+{%- endblock form_row -%}
+
+
+{%- block form_errors -%}
+    {%- if errors|length > 0 -%}
+        <ul class="list list-unstyled">
+            {%- for error in errors -%}
+                <li class="alert alert-danger">{{ error.message }}</li>
+            {%- endfor -%}
+        </ul>
+    {%- endif -%}
+{%- endblock form_errors -%}

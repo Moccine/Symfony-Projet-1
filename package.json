@@ -1,0 +1,10 @@
+{
+  "name": "global-service-plus",
+  "version": "1.0.0",
+  "description": "global service plus",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

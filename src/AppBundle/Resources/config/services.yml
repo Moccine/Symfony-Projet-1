@@ -1,0 +1,6 @@
+# src/AppBundle/Resources/config/services.yml
+services:
+    AppBundle\Form\ProductType: # this is your form type class
+        arguments: ["@doctrine.orm.entity_manager"]
+            tags: [{ name: form.type]
+

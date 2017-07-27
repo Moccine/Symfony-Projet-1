@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+        <h2>Ajouter </h2>
+        <hr>
+        <div class="container">
+            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.price) }}
+                    {{ form_row(form.caracterisques) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_row(form.images) }}
+                </div>
+            </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  {{ form_row(form.category) }}
+              </div>
+              <div class="col-lg-6">
+                  {{ form_row(form.marque) }}
+              </div>
+          </div>
+            <div class="row">
+                <div class="col-lg-12"></div>
+                {{ form_row(form.description) }}
+            </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <button type="submit" class="btn btn-block btn-primary">valider</button>
+        </div>
+        <div class="col-lg-6">
+            <button type="reset" class="btn btn-block btn-warning">reset</button>
+        </div>
+    </div>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+{% endblock %}

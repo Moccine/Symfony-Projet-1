@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Heebo');
+.header-top {
+  height: 80px;
+  padding-top: 20px;
+  padding-left: 50px;
+  background-color: #023368;
+  color: white;
+}
+header {
+  /*
+Credits:
+Code snippet by @maridlcrmn (Follow me on Twitter)
+Images by Nike.com (http://www.nike.com/us/en_us/)
+Logo by Sneaker-mission.com (http://www.sneaker-mission.com/)
+*/
+}
+header .container-fluid {
+  padding: 0 !important;
+}
+header .navbar-brand img#logo {
+  width: 150px;
+  background-size: 50px;
+}
+header .nav-tabs {
+  display: inline-block;
+  border-bottom: none;
+  padding-top: 15px;
+  font-weight: bold;
+}
+header .nav-tabs > li > a,
+header .nav-tabs > li > a:hover,
+header .nav-tabs > li > a:focus,
+header .nav-tabs > li.active > a,
+header .nav-tabs > li.active > a:hover,
+header .nav-tabs > li.active > a:focus {
+  border: none;
+  border-radius: 0;
+}
+header .nav-list {
+  border-bottom: 0;
+}
+header .nav-list > li {
+  padding: 20px 15px 15px;
+}
+header .nav-list > li:last-child {
+  border-right: 0;
+}
+header .nav-list > li > a:hover {
+  text-decoration: none;
+}
+header .nav-list > li > a > span {
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+header .mega-dropdown {
+  position: static !important;
+}
+header .mega-dropdown-menu {
+  padding: 20px 15px 15px;
+  text-align: center;
+  width: 100%;
+}
+header #login-dp {
+  min-width: 250px;
+  padding: 14px 14px 0;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+header #login-dp .help-block {
+  font-size: 12px;
+}
+header #login-dp .bottom {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-top: 0;
+  clear: both;
+  padding: 14px;
+}
+header #login-dp .social-buttons {
+  margin: 12px 0;
+}
+header #login-dp .social-buttons a {
+  width: 49%;
+}
+header #login-dp .form-group {
+  margin-bottom: 10px;
+}
+header .btn-fb {
+  color: #fff;
+  background-color: #3b5998;
+}
+header .btn-fb:hover {
+  color: #fff;
+  background-color: #496ebc;
+}
+header .btn-tw {
+  color: #fff;
+  background-color: #55acee;
+}
+header .btn-tw:hover {
+  color: #fff;
+  background-color: #59b5fa;
+}
+@media (max-width: 768px) {
+  header #login-dp {
+    background-color: inherit;
+    color: #fff;
+  }
+  header #login-dp .bottom {
+    background-color: inherit;
+    border-top: 0 none;
+  }
+}
+header .navbar-login {
+  width: 305px;
+  padding: 10px;
+  padding-bottom: 0;
+}
+header .navbar-login-session {
+  padding: 10px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+header .icon-size {
+  font-size: 87px;
+}
+header .navbar-brand {
+  width: 150px;
+  background-size: 50px;
+  padding-top: 7px;
+}
+header .navbar-nav {
+  padding-left: 15px;
+}
+header .navbar-default .navbar-collapse,
+header .navbar-default .navbar-form {
+  border: none;
+}
+header .container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+header .navbar-default .navbar-nav > .active > a,
+header .navbar-default .navbar-nav > .active > a:hover,
+header .navbar-default .navbar-nav > .active > a:focus {
+  color: white;
+  background-color: #428bca;
+}
+header .navbar-default {
+  background-color: transparent;
+  border: none;
+}
+header .navbar-default .navbar-nav > li > a {
+  color: #023368;
+  text-transform: uppercase;
+}
+header .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  list-style: none;
+  background-color: white;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.172549) 0px 6px 12px;
+}
+header .nav-list > li {
+  padding: 20px 15px 15px;
+  border-left: 0px;
+}
+header .nav-list > li .nav-list {
+  border-bottom: 0px;
+}
+header .nav-list > li .nav-tabs > li.active > a,
+header .nav-list > li .nav-tabs > li.active > a:hover,
+header .nav-list > li .nav-tabs > li.active > a:focus {
+  color: white;
+  cursor: default;
+  background-color: #428bca;
+}
+header .nav-list > li .nav-tabs > li.active > a,
+header .nav-list > li .nav-tabs > li.active > a:hover,
+header .nav-list > li .nav-tabs > li.active > a:focus {
+  color: black;
+  cursor: default;
+  background-color: #ffffff;
+  border: solid black 1px;
+}
+header .nav-list > li body {
+  padding-top: 20px;
+}
+header .nav-list > li #myCarousel .nav a small {
+  display: block;
+}
+header .nav-list > li #myCarousel .nav {
+  background: #eee;
+}
+header .nav-list > li .nav-justified > li > a {
+  border-radius: 0;
+}
+header .nav-list > li .nav-pills > li[data-slide-to="0"].active a {
+  background-color: #16a085;
+}
+header .nav-list > li .nav-pills > li[data-slide-to="1"].active a {
+  background-color: #e67e22;
+}
+header .nav-list > li .nav-pills > li[data-slide-to="2"].active a {
+  background-color: #2980b9;
+}
+header .nav-list > li .nav-pills > li[data-slide-to="3"].active a {
+  background-color: #8e44ad;
+}
+header .nav-list > li input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+section.main-section h2 {
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #ea2349;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  color: white;
+}

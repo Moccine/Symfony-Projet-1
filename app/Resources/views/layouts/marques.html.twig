@@ -1,0 +1,24 @@
+<div id="filters" class="dropdown-menu mega-dropdown-menu">
+    <div class="container-fluid2">
+        <!-- Tab panes -->
+        {% if marques is defined %}
+        <div class="row">
+            <div class="col-lg-2">
+                <ul class="list-unstyled text-left">
+            {% for marque in marques %}
+                <li class="list-item">{{ marque.name }} </li>
+                {% if (loop.index)%4 == 0 and loop.index !=0%}
+                </ul>
+            </div>
+            <div class="col-lg-2">
+                <ul class="list-unstyled">
+                    {% endif %}
+            {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+        {% endif %}
+    </div>
+    <!-- Nav tabs -->
+</div>

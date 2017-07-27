@@ -1,0 +1,27 @@
+.logo img {
+  width: 150px;
+}
+.header-top {
+  height: 80px;
+  padding-top: 20px;
+  padding-left: 50px;
+  background-color: #023368;
+}
+header .container-fluid {
+  padding: 0;
+}
+header ul {
+  margin-right: 20px;
+}
+header ul li a {
+  color: white;
+}
+header .header-call.pull-left {
+  color: white;
+}
+header nav {
+  height: 100Px;
+}
+header menu ul {
+  padding-top: 5px;
+}

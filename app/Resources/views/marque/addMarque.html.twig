@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+        <h2>Ajouter </h2>
+        <hr>
+        {{ form(form) }}
+        <div class="col-lg-6">
+            <button type="submit" class="btn btn-block btn-primary">valider</button>
+        </div>
+        <div class="col-lg-6">
+            <button type="reset" class="btn btn-block btn-warning">reset</button>
+        </div>
+    </div>
+{% endblock %}
