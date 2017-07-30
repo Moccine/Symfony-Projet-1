@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Category controller.
@@ -26,7 +27,7 @@ class CategoryController extends Controller
 
         $categories = $em->getRepository('AppBundle:Category')->findAll();
 
-        return $this->render('category/index.html.twig', array(
+        return $this->render('layouts/materialCatalogs.html.twig', array(
             'categories' => $categories,
         ));
     }
@@ -130,7 +131,22 @@ class CategoryController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('category_delete', array('id' => $category->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
+    /**
+     *
+     * @Route("/catalogue", name="category_all")
+     */
+    public function menuCategoryAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('AppBundle:Category')->findAll();
+       dump($categories);
+        return $this->render('layouts/materialCatalogs.html.twig', array(
+            'menu_categories' => $categories,
+        ));
+    }
+
 }

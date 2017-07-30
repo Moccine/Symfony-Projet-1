@@ -248,3 +248,13 @@ section.main-section h2 {
   padding-bottom: 18px;
   color: white;
 }
+
+li.big-menu-item {
+  padding: 10px 0;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+li.big-menu-item a:hover{
+  background-color: #f2f2f2;
+
+}

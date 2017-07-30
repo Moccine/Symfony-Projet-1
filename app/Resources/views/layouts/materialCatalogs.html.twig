@@ -1,0 +1,18 @@
+{% if categories is defined %}
+    <div class="row">
+        <div class="col-lg-4 text-uppercase">
+            <ul class="list-unstyled">
+                {% for categorie in categories %}
+                <li class="big-menu-item"><a href="#">{{ categorie.name }}</a>  </li>
+                {% if (loop.index)%4 == 0 and loop.index !=0 %}
+            </ul>
+        </div>
+        <div class="col-lg-4">
+            <ul class="list-unstyled">
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}
+

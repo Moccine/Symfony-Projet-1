@@ -1,51 +1,32 @@
 <div id="filters" class="dropdown-menu mega-dropdown-menu">
     <div class="container-fluid2">
         <!-- Tab panes -->
-        <div class="row">
-            <div class="col-lg-4">
-                <ul class="list-unstyled">
-                    <li>Categogy 1</li>
-                    <li>Categogy 1</li>
-                    <li>Categogy 1</li>
-                    <li>Categogy 1</li>
-                    <li>Categogy 1</li>
-                </ul>
-            </div>
-            <div class="col-lg-4">
-                <ul class="list-unstyled">
-                    <li>Categogy 1</li>
-                    <li>Categogy 1</li>
-                    <li>Categogy 1</li>
-                    <li>Categogy 1</li>
-                    <li>Categogy 1</li>
-                </ul>
-            </div>
-        </div>
+        {{ render(controller('AppBundle:Category:index')) }}
+        {#{% include('layouts/materialCatalogs.html.twig') %}#}
 
         <div class="tab-content">
 
             <div class="tab-pane active" id="kids">
                 <ul class="nav-list list-inline">
                     <li><a data-filter=".89" href="#">
-                            <img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Running.png">
-                            <span>BRICS</span>
+                            <img src="http://placehold.it/200x100"> <span>BRICS</span>
                         </a>
                     </li>
-                    <li><a data-filter=".97" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Basketball.png"><span>Latin America</span></a></li>
-                    <li><a data-filter=".96" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Football.png"><span>USA</span></a></li>
-                    <li><a data-filter=".87" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Soccer.png"><span>Middle East</span></a></li>
-                    <li><a data-filter=".85" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_MensTraining.png"><span>Asia</span></a></li>
-                    <li><a data-filter=".90" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_MensTraining.png"><span>Africa</span></a></li>
+                    <li><a data-filter=".97" href="#"><img src="http://placehold.it/200x100"><span>Latin America</span></a></li>
+                    <li><a data-filter=".96" href="#"><img src="http://placehold.it/200x100"><span>USA</span></a></li>
+                    <li><a data-filter=".87" href="#"><img src="http://placehold.it/200x100"><span>Middle East</span></a></li>
+                    <li><a data-filter=".85" href="#"><img src="http://placehold.it/200x100"><span>Asia</span></a></li>
+                    <li><a data-filter=".90" href="#"><img src="http://placehold.it/200x100"><span>Africa</span></a></li>
                 </ul>
             </div>
             <div class="tab-pane" id="sports">
                 <ul class="nav-list list-inline">
-                    <li><a data-filter=".38" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Basketball.png"><span>Technology</span></a></li>
-                    <li><a data-filter=".41" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Football.png"><span>Music</span></a></li>
-                    <li><a data-filter=".62" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Soccer.png"><span>Startups</span></a></li>
-                    <li><a data-filter=".82" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_MensTraining.png"><span>Celebrities</span></a></li>
-                    <li><a data-filter=".93" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_WomensTraining.png"><span>Entertainment</span></a></li>
-                    <li><a data-filter=".94" href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_WomensTraining.png"><span>Series</span></a></li>
+                    <li><a data-filter=".38" href="#"><img src="http://placehold.it/200x100"><span>Technology</span></a></li>
+                    <li><a data-filter=".41" href="#"><img src="http://placehold.it/200x100"><span>Music</span></a></li>
+                    <li><a data-filter=".62" href="#"><img src="http://placehold.it/200x100"><span>Startups</span></a></li>
+                    <li><a data-filter=".82" href="#"><img src="http://placehold.it/200x100"><span>Celebrities</span></a></li>
+                    <li><a data-filter=".93" href="#"><img src="http://placehold.it/200x100"><span>Entertainment</span></a></li>
+                    <li><a data-filter=".94" href="#"><img src="http://placehold.it/200x100"><span>Series</span></a></li>
                 </ul>
             </div>
         </div>
