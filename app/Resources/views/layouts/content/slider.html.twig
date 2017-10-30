@@ -1,0 +1,104 @@
+<div class="mainSlider" data-thumb="true" data-thumb-width="230" data-thumb-height="100">
+    <div class="sliderLoader">Loading...</div>
+    <!-- Slider main container -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide"
+                 data-thumb="{{ asset('Assets/images/template_images/images/slider/slide-02-thumb.png') }}"
+                 data-href="#" data-target="_blank">
+                <!-- _blank or _self ( _self is default )-->
+                <div class="wrapper">
+                    <figure>
+                        <img src="{{ asset('Assets/images/bg.jpg') }}" alt="">
+                    </figure>
+                    <div class="text2-1 animate" data-animate="flipInY" data-delay="0"> Global<small> service-plus</small></div>
+                    <div class="text2-2 animate" data-animate="bounceIn" data-delay="500"> Season sale</div>
+                    <div class="text2-3 animate" data-animate="bounceIn" data-delay="1000"> popular brands</div>
+                    <div class="text2-4 animate" data-animate="rubberBand" data-delay="1500"> 70%</div>
+                    <div class="text2-5 animate" data-animate="hinge" data-delay="2000"> OFF</div>
+                </div>
+            </div>
+            <div class="swiper-slide"
+                 data-thumb="{{ asset('Assets/images/template_images/images/slider/slide-01-thumb.png') }}">
+                <div class="wrapper">
+                    <figure>
+                        <img src="{{ asset('Assets/images/template_images/images/slider/slide-01.jpg') }}" alt="">
+                    </figure>
+                    <div class="caption animate" data-animate="fadeIn">
+                        <div class="text1 animate" data-animate="flipInY" data-delay="0"> Seikō</div>
+
+                        <div class="text2 animate" data-animate="bounceInLeft" data-delay="500">
+                            <strong>New</strong> collection
+                        </div>
+                        <div class="text3 animate" data-animate="bounceInLeft" data-delay="1500">WOMEN'S
+                            <strong>FASHION</strong></div>
+
+                        <div class="animate" data-animate="fadeIn" data-delay="2000">
+                            <!-- coolbutton -->
+                            <a href="{{ path('homepage') }}" class="cool-btn"
+                               style="-webkit-clip-path: url(#coolButton); clip-path: url(#coolButton);">
+                                <span>MORE</span> </a>
+                            <svg class="clip-svg">
+                                <defs>
+                                    <clipPath id="coolButton" clipPathUnits="objectBoundingBox">
+                                        <polygon points="0 .18, .99 .15, .91 .85, .07 .8"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            <!-- // coolbutton -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide"
+                 data-thumb="{{ asset('Assets/images/template_images/images/slider/slide-03-thumb.png') }}">
+                <div class="wrapper">
+                    <figure>
+                        <img  src="{{ asset('Assets/images/template_images/images/slider/slide-03.jpg') }}" alt="">
+                    </figure>
+                    <div class="text3-1 animate" data-animate="bounceInDown" data-delay="0">
+                        Street
+                    </div>
+                    <div class="text3-2 animate" data-animate="bounceInDown" data-delay="500"> Fashion </div>
+                    <div class="text3-3 animate" data-animate="bounceInDown" data-delay="1000">
+                        And
+                    </div>
+                    <div class="text3-4 animate" data-animate="bounceIn" data-delay="1500"> Urban </div>
+
+                    <div class="text3-5 animate" data-animate="bounceIn" data-delay="2000">Subcultures</div>
+
+                    <a href="{{ path('homepage') }}" class="text3-6 animate"
+                       data-animate="rubberBand" data-delay="2500"> SHOP NOW </a>
+                </div>
+            </div>
+            <div class="swiper-slide"
+                 data-thumb="{{ asset('Assets/images/template_images/images/slider/slide-04-thumb.png') }}">
+                <div class="wrapper">
+                    <figure>
+                        <img src="{{ asset('Assets/images/template_images/images/slider/slide-04.jpg') }}" alt="">
+                    </figure>
+                    <div class="text4-1 animate" data-animate="bounceInLeft" data-delay="0">Summer</div>
+
+                    <div class="text4-2 animate" data-animate="bounceInDown" data-delay="500">very soon</div>
+
+                    <div class="text4-3 animate" data-animate="bounceInUp" data-delay="1000">
+                        Thingsto buy a swimsuit at a discount
+                    </div>
+
+
+                    <a href="{{ path('homepage') }}" class="text4-4 animate"
+                       data-animate="bounceInLeft" data-delay="1500">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+        <!-- pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- pagination thumbs -->
+        <div class="swiper-pagination-thumbs">
+            <div class="thumbs-wrapper">
+                <div class="thumbs"></div>
+            </div>
+        </div>
+    </div>
+</div>

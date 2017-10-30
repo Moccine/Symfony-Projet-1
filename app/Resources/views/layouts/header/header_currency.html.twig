@@ -1,0 +1,22 @@
+<div class="header-link header-select dropdown-link header-currency">
+
+    <a href="{{ path('homepage') }}">
+        <span class="symbol">{{ currency['symbol-currency'] }}</span>  {{  currency['currency'] }}
+    </a>
+
+    <ul class="dropdown-container">
+        <li>
+            <a href="{{ path('change_currency', {'currency': 'USD', 'symbol-currency': '$' }) }}">
+                <span class="symbol">$</span>USD</a>
+        </li>
+
+        <li class="active">
+            <a href="{{ path('change_currency', {'currency': 'EUR', 'symbol-currency': '€' }) }}">
+                <span class="symbol">€</span>EUR</a>
+        </li>
+
+        <li><a href="{{ path('change_currency', {'currency': 'GBP', 'symbol-currency': '£' }) }}">
+                <span class="symbol">£</span>GBP</a>
+        </li>
+    </ul>
+</div>

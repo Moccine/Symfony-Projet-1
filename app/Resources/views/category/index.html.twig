@@ -1,51 +1,76 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
-    <div class="container">
-
-        <h1 class="text-center">Categories list</h1>
-        <hr>
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-3">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for category in categories %}
-                        <tr>
-                            <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
-                            <td>{{ category.name }}</td>
-                            <td>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <a href="{{ path('category_show', { 'id': category.id }) }}"><i
-                                                    class="fa fa-eye"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('category_edit', { 'id': category.id }) }}"><i
-                                                    class="fa fa-edit"></i> </a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
+{% extends 'main_layout.html.twig' %}
+{% block content %}
+    <main class="page-main">
+        <div class="block">
+            <div class="container">
+                <ul class="breadcrumbs">
+                    <li>
+                        <a href="{{ path('homepage') }}">
+                            <i class="icon icon-home"></i>
+                        </a>
+                    </li>
+                    <li>/<span>Catalogue materiel</span></li>
+                </ul>
             </div>
         </div>
-        <div class="row">
-            <ul class="list-unstyled">
-                <li>
-                    <a href="{{ path('category_new') }}">Create a new category</a>
-                </li>
-            </ul>
-        </div>
+        <div class="container">
+            <!-- Two columns -->
+            <div class="row">
+                <!-- Left column -->
+                <div class="col-md-3 filter-col aside">
+                    <div class="fixed-wrapper">
+                        <div class="fixed-scroll">
+                            <div class="filter-col-content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Left column -->
+                <!-- Center column -->
+                <div class="col-md-9 aside">
+                    <!-- Page Title -->
+                    <div class="page-title">
+                        <div class="title center">
+                            <h1>Catalogue Matériels</h1>
+                        </div>
+                    </div>
+                    <!-- /Page Title -->
+                    <!-- Banners -->
+                    <div class="row">
+                        {% for category in categories %}
+                        <div class="col-sm-4">
+                            <a href="{{ path('category_show', {'slug': category.slug,'page': "1", 'limit': "12"}) }}" class="banner-wrap">
+                                <div class="banner style-9 autosize-text image-hover-scale" data-fontratio="6.4">
+                                    <img src="{{ asset('Assets/images/template_images/images/banners/banner-category-1.jpg') }}" alt="Banner">
+                                    <div class="banner-caption vertb">
+                                        <div class="vert-wrapper">
+                                            <div class="vert">
+                                                <div class="text-1 text-hoverslide" data-hcolor="#ffffff">
+                                                    <span>
+                                                        <span class="text">{{ category.name }}</span>
+                                                        <span class="hoverbg"></span>
+                                                    </span>
+                                                </div>
+                                                <div class="text-2">{{ category.description|slice(0, 200) }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                            {% endfor %}
+                    </div>
+                    <!-- /Banners -->
+                    <!-- Categories Info -->
+                    <div class="info-block">
+                        <p>iam, quis nostrud exercitation ullamco laboris nisi ut aliqui.</p>
+                    </div>
 
-    </div>
+                </div>
+                <!-- /Center column -->
+            </div>
+            <!-- /Two columns -->
+        </div>
+    </main>
 
 {% endblock %}

@@ -3,8 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
@@ -12,6 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="image")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImageRepository")
+ * @Vich\Uploadable
+ *
  */
 class Image
 {
@@ -23,6 +27,14 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="filename")
+     * @Assert\File(maxSize = "10M")
+     *
+     * @var File
+     */
+    private $file;
 
     /**
      * @var string
@@ -51,25 +63,24 @@ class Image
      */
     private $createdAt;
 
-    /**
-     * @ORM\Column(type="string")
-     *
-     * @Assert\NotBlank(message="Please, upload the product image as a JPEG file.")
-     * @Assert\File(mimeTypes={ "image/jpeg", "image/jpg", "image/png" })
-     */
-    private $file;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="images")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="images")
      */
     private $user;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="images",)
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="images", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $product;
+
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Slider", inversedBy="figure", cascade={"persist", "remove"})
+     */
+    private $slider;
 
     /**
      * Image constructor.
@@ -199,8 +210,10 @@ class Image
     public function setFile($file)
     {
         $this->file = $file;
-
-        return $this;
+        if ($file) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
     }
 
     /**
@@ -260,4 +273,28 @@ class Image
         return $this->product;
     }
 
+
+    /**
+     * Set slider
+     *
+     * @param \AppBundle\Entity\Slider $slider
+     *
+     * @return Image
+     */
+    public function setSlider(\AppBundle\Entity\Slider $slider = null)
+    {
+        $this->slider = $slider;
+
+        return $this;
+    }
+
+    /**
+     * Get slider
+     *
+     * @return \AppBundle\Entity\Slider
+     */
+    public function getSlider()
+    {
+        return $this->slider;
+    }
 }

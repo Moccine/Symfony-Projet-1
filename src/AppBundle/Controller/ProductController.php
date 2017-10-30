@@ -2,53 +2,77 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Image;
 use AppBundle\Entity\Product;
 use AppBundle\Form\ProductType;
 use AppBundle\Service\ImagesManager;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Service\ProductManager;
 
 /**
-  * @Route("/product")
+ * @Route("/product")
  */
 class ProductController extends Controller
 {
+    /**
+     * @Route("/", name="index_product")
+     */
+    public function indexAction()
+    {
+        $session = $this->get('session');
 
-    public  function indexAction(){
-        return;
+
+        dump($session->get('cart'));
+        return $this->render('product/index.html.twig', array('product' => array()));
     }
 
     /**
      * @Route("/add", name="add_product")
      */
-    public  function addAction(ProductManager $serviceProduct,
-                               Request $request,
-                               ImagesManager $imagesManager){
-        $product=new Product();
-        /**@var ProductManager **/
-    $form=$this->createForm(ProductType::class, $product);
-    $form->handleRequest($request);
-    if($form->isSubmitted() && $form->isValid()  ){
-        $image=new Image();
-        $product=$form->getData();
-        /** @var ArrayCollection $imageUpload */
-        $imageUpload=$product->getImages();
-        dump($product);
-        if(!$imageUpload->isEmpty()){
-            $file=$imageUpload->current();
-            $fileName = $imagesManager->upload($file);
-            /*$image->setAlt($datas->getAlt());
-            $image->setUser($this->getUser());
-            $image->setFilename($fileName);
-            $em->persist($image);*/
+    public function addAction(ProductManager $serviceProduct,
+                              Request $request,
+                              ImagesManager $imagesManager)
+    {
+        $product = new Product();
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted() and $form->isValid()) {
+            $product = $form->getData();
+            $em->persist($product);
+            $em->flush();
         }
+        return $this->render('product/addProduct.html.twig',
+            array('form' => $form->createView()));
+    }
+
+    /**
+     * @Route("/{id}", defaults={"id"="1"}, name="single_product",  requirements={"id": "\d+"})
+     */
+    public function singleProduct(Request $request)
+    {
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getRepository(Product::class);
+        $singleProduct = $em->find($id);
+        $prodsim = $em->getsimilarProducts($singleProduct);
+        return $this->render('product/singleProduct.html.twig',
+            ['singleProduct' => $singleProduct, 'prodSims' => $prodsim]);
+    }
+
+    /**
+     * @Route("/quick_view",  name="product_quickView")
+     */
+    public function quickView(Request $request)
+    {
+        return $this->render('layouts/content/modal_quik_view/quick_view.html.twig');
+    }
+    /**
+     * @Route("/quick_view",  name="product_quickView")
+     */
+    public function productsByCategory($Request)
+    {
 
     }
-        return $this->render('product/addProduct.html.twig',
-            array( 'form'=>$form->createView()));
-    }
+
 }

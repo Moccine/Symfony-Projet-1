@@ -34,10 +34,12 @@ class ImageController extends Controller
         $form = $this->createForm(ImageType::class, $image);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
             //recuperation des donnees
+
             /**@var Image $datas */
             $datas = $form->getData();
-            dump($datas);
+
             /** @var UploadedFile $file */
             $file = $datas->getFile();
             $fileName = $imageUploader->upload($file);
@@ -50,6 +52,11 @@ class ImageController extends Controller
         return $this->render('image/addImage.html.twig',
             array('form' => $form->createView()));
     }
+
+    public  function showAction(){
+
+    }
+
 
     /**
      * @Route("/remove/{id}", name="remove_image")

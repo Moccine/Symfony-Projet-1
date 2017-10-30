@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{ include('@layouts_twig/head/head.html.twig') }}
+<body class="boxed">
+<!-- Loader -->
+{{ include('@layouts_twig/header/loader.html.twig') }}
+<!-- /Loader -->
+<div class="fixed-btns">
+    <!-- Back To Top -->
+    <a href="{{ path('homepage') }}" class="top-fixed-btn back-to-top"><i class="icon icon-arrow-up"></i></a>
+    <!-- /Back To Top -->
+</div>
+{{ block('content') }}
+<!-- ProductStack -->
+<div class="productStack disable hide_on_scroll"><a href="{{ path('homepage') }}" class="toggleStack"><i
+                class="icon icon-cart"></i> (6) items</a>
+    <div class="productstack-content">
+        <div class="products-list-wrapper">
+            <ul class="products-list">
+                <li>
+                    <a href="#" title="Product Name Long Name">
+                        <img class="product-image-photo"
+                             src="{{ asset('Assets/images/template_images/images/products/product-10.jpg') }}"
+                                                                               alt="">
+                    </a>
+                    <span
+                            class="item-qty">3</span>
+                    <div class="actions">
+                        <a href="{{ path('homepage') }}" class="action edit" title="Edit item"><i
+                                    class="icon icon-pencil"></i></a> <a class="action delete"
+                                                                         href="{{ path('homepage') }}"
+                                                                         title="Delete item"><i
+                                    class="icon icon-trash-alt"></i></a>
+                        <div class="edit-qty">
+                            <label>
+                                <input type="number" value="3">
+                            </label>
+                            <button type="button" class="btn">Apply</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="product.html" title="Product Name Long Name">
+                        <img class="product-image-photo"
+                                                                               src="{{ asset('Assets/images/template_images/images/products/product-11.jpg') }}"
+                                                                               alt=""></a> <span
+                            class="item-qty">3</span>
+                    <div class="actions"><a class="action edit" href="{{ path('homepage') }}" title="Edit item"><i
+                                    class="icon icon-pencil"></i></a> <a class="action delete"
+                                                                         href="{{ path('homepage') }}"
+                                                                         title="Delete item"><i
+                                    class="icon icon-trash-alt"></i></a>
+                        <div class="edit-qty">
+                            <label>
+                                <input type="number" value="3">
+                            </label>
+                            <button type="button" class="btn">Apply</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="product.html" title="Product Name Long Name"><img class="product-image-photo"
+                                                                               src="{{ asset('Assets/images/template_images/images/products/product-12.jpg') }}"
+                                                                               alt=""></a> <span
+                            class="item-qty">3</span>
+                    <div class="actions"><a class="action edit" href="{{ path('homepage') }}" title="Edit item"><i
+                                    class="icon icon-pencil"></i></a> <a class="action delete"
+                                                                         href="{{ path('homepage') }}"
+                                                                         title="Delete item">
+                            <i class="icon icon-trash-alt"></i></a>
+                        <div class="edit-qty">
+                            <label>
+                                <input type="number" value="3">
+                            </label>
+                            <button type="button" class="btn">Apply</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="product.html" title="Product Name Long Name">
+                        <img class="product-image-photo"
+                             src="{{ asset('Assets/images/template_images/images/products/product-13.jpg') }}"
+                             alt=""></a> <span
+                            class="item-qty">3</span>
+                    <div class="actions"><a class="action edit" href="{{ path('homepage') }}" title="Edit item"><i
+                                    class="icon icon-pencil"></i></a> <a class="action delete"
+                                                                         href="{{ path('homepage') }}"
+                                                                         title="Delete item"><i
+                                    class="icon icon-trash-alt"></i></a>
+                        <div class="edit-qty">
+                            <label>
+                                <input type="number" value="3">
+                            </label>
+                            <button type="button" class="btn">Apply</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="product.html" title="Product Name Long Name"><img class="product-image-photo"
+                                                                               src="{{ asset('Assets/images/template_images/images/products/product-14.jpg') }}"
+                                                                               alt=""></a> <span
+                            class="item-qty">3</span>
+                    <div class="actions"><a class="action edit" href="{{ path('homepage') }}" title="Edit item"><i
+                                    class="icon icon-pencil"></i></a> <a class="action delete"
+                                                                         href="{{ path('homepage') }}"
+                                                                         title="Delete item"><i
+                                    class="icon icon-trash-alt"></i></a>
+                        <div class="edit-qty">
+                            <label>
+                                <input type="number" value="3">
+                            </label>
+                            <button type="button" class="btn">Apply</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="product.html" title="Product Name Long Name"><img class="product-image-photo"
+                                                                               src="{{ asset('Assets/images/template_images/images/products/product-15.jpg') }}"
+                                                                               alt=""></a> <span
+                            class="item-qty">3</span>
+                    <div class="actions"><a class="action edit" href="{{ path('homepage') }}" title="Edit item"><i
+                                    class="icon icon-pencil"></i></a> <a class="action delete"
+                                                                         href="{{ path('homepage') }}"
+                                                                         title="Delete item"><i
+                                    class="icon icon-trash-alt"></i></a>
+                        <div class="edit-qty">
+                            <label>
+                                <input type="number" value="3">
+                            </label>
+                            <button type="button" class="btn">Apply</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="action-cart">
+            <button type="button" class="btn" title="Checkout"><span>Checkout</span></button>
+            <button type="button" class="btn" title="Go to Cart"><span>Go to Cart</span></button>
+        </div>
+        <div class="total-cart">
+            <div class="items-total">Items <span class="count">6</span></div>
+            <div class="subtotal">Subtotal <span class="price">2.150</span></div>
+        </div>
+    </div>
+</div>
+<!-- /ProductStack -->
+
+<!-- Modal Quick View -->
+{{ include('@layouts_twig/content/modal_quick_view.html.twig') }}
+
+<!-- /Modal Quick View -->
+
+<!-- jQuery Scripts  -->
+{{ include('@layouts_twig/footer/scripts.html.twig') }}
+
+</body>
+
+</html>

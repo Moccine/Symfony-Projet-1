@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * MarqueRepository
@@ -10,4 +11,33 @@ namespace AppBundle\Repository;
  */
 class MarqueRepository extends \Doctrine\ORM\EntityRepository
 {
+    public  function getMarque($id){
+
+        return   $this->getEntityManager()
+            ->createQuery(
+                "SELECT p FROM AppBundle:Marque p WHERE p.id = $id"
+            )
+            ->getResult();
+    }
+
+    public function getMarques($slug, $currentPage, $limit)
+    {
+        $em=$this->getEntityManager();
+
+        $qb = $em->createQuery("SELECT p FROM AppBundle:Product p 
+                                JOIN p.marque m 
+                                WHERE m.slug =:slug");
+        $qb->setParameter('slug', $slug);
+        $paginator=$this->paginate($qb, $currentPage, $limit);
+        return $paginator;
+    }
+
+    public  function paginate($dql, $page, $limit){
+        $paginator= new Paginator($dql);
+        $paginator->getQuery()
+            ->setFirstResult($limit*($page-1))
+            ->setMaxResults($limit);
+        return $paginator;
+    }
+
 }

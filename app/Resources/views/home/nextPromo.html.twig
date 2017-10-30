@@ -1,0 +1,12 @@
+{% if nextPromo is defined and  nextPromo is not empty  %}
+    <div class="news-item">
+        <div class="news-date">{{ nextPromo.datedebut | date("d-m-Y") }}</div>
+        <h4 class="news-title">{{ nextPromo.name }}</h4>
+        <div class="news-text">
+            <p>- {{ nextPromo.discounts }} %</p>
+            <p><a href="{{ path('homepage') }}" class="readmore">...suite</a></p>
+        </div>
+    </div>
+{% else %}
+    <div>pas de promotion</div>
+{% endif %}

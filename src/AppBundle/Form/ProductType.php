@@ -2,17 +2,17 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\Image;
 use AppBundle\Service\ProductManager;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductType extends AbstractType
 {
@@ -38,16 +38,19 @@ class ProductType extends AbstractType
 
         $builder->add('name')
             ->add('price', MoneyType::class)
-            ->add('images', ImageType::class, array(
-                'data_class' => null
+            ->add('images', CollectionType::class, array(
+                'entry_type' => ImageType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
             ))
-            ->add('caracterisques')
+            ->add('caracterisques', TextareaType::class)
             ->add('category', EntityType::class, array(
-                'class'=>'AppBundle:Category',
+                'class' => 'AppBundle:Category',
                 "choices" => $this->category
             ))
             ->add('marque', EntityType::class, array(
-                'class'=>'AppBundle:Marque',
+                'class' => 'AppBundle:Marque',
                 "choices" => $this->marques))
             ->add('description', TextareaType::class);
 
@@ -75,17 +78,25 @@ class ProductType extends AbstractType
     private function getMarque($array)
     {
         $tab = array();
-   foreach ($array as $key=>$value){
-       $tab[$value->getName()]=$value;
-       //$tab[$value->getName()]=$value;
-   }
+        foreach ($array as $key => $value) {
+            /**@var \AppBundle\Entity\Marque $value * */
+            $tab[$value->getName()] = $value;
+            //$tab[$value->getName()]=$value;
+        }
         return $tab;
     }
-    public function getCategory($array){
+
+    /**
+     * @param $array
+     * @return array
+     */
+    public function getCategory($array)
+    {
         $tab = array();
-        foreach ($array as $key=>$value){
+        foreach ($array as $key => $value) {
+            /**@var \AppBundle\Entity\Category $value * */
             //$value=$array[$i];
-            $tab[$value->getName()]=$value->getName();
+            $tab[$value->getName()] = $value->getName();
 
         }
         return $tab;

@@ -2,6 +2,10 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Product;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * ProductRepository
  *
@@ -10,4 +14,105 @@ namespace AppBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllOrderedByName()
+    {
+        //$entity = Product::class;
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT p FROM AppBundle:Product p ORDER BY p.name ASC'
+            )
+            ->getResult();
+    }
+
+    public function AddProduct()
+    {
+
+    }
+
+    public function getLastProduct($limit)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->select('p')
+            ->orderBy('p.id', 'DESC');
+        return $qb->setMaxResults($limit)->getQuery()->execute();
+    }
+
+    public function getSearchResult($value)
+    {
+        //$value=explode(" ", $value);
+        $qb = $this->createQueryBuilder('p');
+        /** @var QueryBuilder $qb */
+        $qb->add('where', $qb->expr()->like('p.name', '?1'))
+            ->setParameter(1, "%$value%");
+        return $qb->getQuery()->execute();
+
+    }
+
+    public function getsimilarProducts(Product $product, $nbr = 10)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->select('p')
+            ->where('p.category=:category')
+            ->orderBy('p.price', 'DESC')
+            ->setParameter('category', $product->getCategory());
+        return $qb->setMaxResults($nbr)->getQuery()->getResult();
+
+    }
+
+    public function getProductCollection(array $arrayId)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->select('p')
+            ->where('p.id in (:array)')
+            ->setParameter('array', $arrayId);
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param $item
+     * @return array
+     */
+    public function getCategory($item)
+    {
+        $qb = $this->createQueryBuilder(
+            "SELECT * FROM category   c
+              LEFT JOIN product  p ON p.category_id=c.id
+              WHERE c.name=$item"
+        );
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getAllProducts( $currentPage, $limit ){
+        $qb = $this->createQueryBuilder('p')
+            ->select('p');
+        $paginator = $this->paginate($qb, $currentPage, $limit);
+        return $paginator;
+    }
+
+
+    public function getProductVenteenligne($slug, $currentPage, $limit)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p');
+        /*$qb->Join('p.category', 'c');
+            ->where('p.venteenligne=:vente')
+        ->setParameter('vente', 1);*/
+        $paginator = $this->paginate($qb->getQuery(), $currentPage, $limit);
+        return $paginator;
+    }
+
+    /**
+     * @param $dql
+     * @param $page
+     * @param $limit
+     * @return Paginator
+     */
+    public function paginate($dql, $page, $limit)
+    {
+        $paginator = new Paginator($dql);
+        $paginator->getQuery()
+            ->setFirstResult($limit * ($page - 1))
+            ->setMaxResults($limit);
+        return $paginator;
+    }
 }

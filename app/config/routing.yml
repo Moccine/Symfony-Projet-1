@@ -1,5 +1,9 @@
+app_contact:
+    resource: "@AppBundle/Controller/ContactController.php"
+    type:     annotation
+
 user:
-    resource: "@userBundle/Controller/"
+    resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /
 

@@ -1,0 +1,51 @@
+<div class="megamenu center fadein blackout">
+
+
+    <ul class="nav">
+        {#<li class="mega-dropdown"> <a href="category.html">Services</a>#}
+            {#<!-- Services items -->#}
+            {#{{ include('layouts/header/menus/services_items.html.twig') }}#}
+        {#</li>#}
+        <li class="mega-dropdown">
+            <a href="{{ path('all_vente_en_lignes') }}">Ventes en ligne<span class="menu-label">-15%</span></a>
+            <div class="sub-menu">
+                <div class="container">
+                    <div class="megamenu-categories column-6">
+                        <!-- megamenu column -->
+                        {{ render(controller('AppBundle:Home:menuItems')) }}
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="mega-dropdown">
+            <a href="{{ path('all_category') }}">Catalogue Matériels </a>
+            <div class="sub-menu">
+                <div class="container">
+                    <div class="megamenu-categories column-6">
+                        {{ render(controller(
+                        'AppBundle:Home:categoryMenuItems'
+                        )) }}
+                        <!-- /megamenu column -->
+                    </div>
+                </div>
+            </div>
+        </li>  <li class="mega-dropdown">
+            <a href="{{ path('all_marques') }}">Marques informatiques </a>
+            <div class="sub-menu">
+                <div class="container">
+                    <div class="megamenu-categories column-6">
+                        <!-- megamenu column -->
+                        <div class="megamenu-categories column-6">
+                            {{ render(controller(
+                            'AppBundle:Home:marqueMenuItems'
+                            )) }}
+                            <!-- /megamenu column -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li><a href="{{ path('contact_index') }}">Contact</a></li>
+    </ul>
+</div>

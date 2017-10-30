@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{ include('@layouts_twig/head/head.html.twig') }}
+<body class="boxed">
+<!-- Loader -->
+{% if app.session.get('currency') %}
+    {% set currency = app.session.get('currency') %}
+{% else %}
+    {% set currency = currency|merge({'symbol-currency': '€', 'currency': 'EUR'}) %}
+{% endif %}
+{{ include('@layouts_twig/header/loader.html.twig') }}
+<!-- /Loader -->
+<div class="fixed-btns">
+    <!-- Back To Top -->
+    <a href="{{ path('homepage') }}" class="top-fixed-btn back-to-top">
+        <i class="icon icon-arrow-up"></i>
+    </a>
+    <!-- /Back To Top -->
+</div>
+<div id="wrapper">
+    <!-- Page -->
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="page-header center fullboxed variant-5 sticky always">
+            <div class="navbar">
+                <div class="container">
+                    <!-- Menu Toggle -->
+                    <div class="menu-toggle"><a href="#" class="mobilemenu-toggle"><i class="icon icon-menu"></i></a>
+                    </div>
+                    <!-- /Menu Toggle -->
+                    <!-- Header Middle Row -->
+                    <div class="header-middle-row">
+                        <div class="header-middle-left">
+                            <div class="header-custom-text">
+                                <div>
+                                    <span>
+                                        <i class="icon icon-phone"></i>
+                                        +336 058 842</span>
+                                    <span><i class="icon icon-phone"></i>
+                                        +224 657 681 632</span></div>
+                                <div><i class="icon icon-location"></i>
+                                    Residence de Conakry R-Guinée <br>
+                                    1ere Etage Immeuble Kipé Centre Emeteur commune de Ratoma
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-middle-center">
+                            <!-- Logo -->
+                            {{ include('layouts/header/logo.html.twig') }}
+                            <!-- /Logo -->
+                        </div>
+                        <div class="header-middle-right">
+                            <!-- Header Cart -->
+                            <div class="header-link dropdown-link header-cart variant-1">
+                                <a href="{{ path('index_cart') }}">
+                                    <i class="icon icon-cart"></i>
+                                    <span class="badge">{{ app.session.get('items') }}</span>
+                                </a>
+                                <!-- minicart wrapper -->
+                            {#    <div class="dropdown-container right">
+                                    <!-- minicart content -->
+                                    {{ include('@layouts_twig/footer/minicart.html.twig') }}
+                                    <!-- /minicart content -->
+                                </div>#}
+                                <!-- /minicart wrapper -->
+                            </div>
+                            <!-- /Header Cart -->
+                            <!-- Header Links -->
+                            <div class="header-links">
+                                <!-- Header Language -->
+                                {{ include('layouts/header/header_language.html.twig') }}
+                                <!-- /Header Language -->
+                                <!-- Header Currency -->
+                                {{ include('layouts/header/header_currency.html.twig') }}
+                                <!-- /Header Currency -->
+                                <!-- Header Account -->
+                                {{ include('layouts/header/header_account.html.twig') }}
+                                <!-- /Header Account -->
+                            </div>
+                            <!-- /Header Links -->
+                        </div>
+                    </div>
+                    <!-- /Header Middle Row -->
+                    <!-- Header Search -->
+                    {{ include('layouts/header/header_search.html.twig') }}
+
+                    <!-- /Header Search -->
+                </div>
+                <div class="menu-wrapper">
+                    <div class="container">
+                        <!-- Mobile Menu -->
+                        {{ include('layouts/header/mobile_menu.html.twig') }} <!-- Mobile Menu -->
+                        <!-- Mega Menu -->
+                        {{ include('layouts/header/mega_menu.html.twig') }}
+                        <!-- /Mega Menu -->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- /Header -->
+        <!-- Sidebar -->
+        {{ include('@layouts_twig/header/sidebar.html.twig') }} <!-- /Sidebar -->
+        <!-- Page Content -->
+
+
+        <main class="page-main">
+            {% block content %}{% endblock %}
+        </main>
+        <!-- /Page Content -->
+        <!-- Footer -->
+        <footer class="page-footer variant4 fullboxed">
+            <div class="footer-top bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- newsletter -->
+                            <div class="newsletter variant3">
+                                <div class="footer-logo">
+                                    <a href="{{ path('homepage') }}">
+                                        <img  style="width: 30%" src="{{ asset('Assets/images/global-service-plus-logo.jpg') }}"
+                                             alt="Footer Logo">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <!-- /newsletter -->
+                        </div>
+                        <div class="col-md-3">
+                            <h3><span class="custom-color"></span> Boutique news </h3>
+                           {{ render(controller("AppBundle:Home:nextPromo")) }}
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Twitter</h3>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3">
+                            <div class="footer-block collapsed-mobile">
+                                <div class="title">
+                                    <h4>INFORMATION</h4>
+                                    <div class="toggle-arrow"></div>
+                                </div>
+                                <div class="collapsed-content">
+                                    <ul class="marker-list">
+                                        <li><a href="about.html">A propos de nous</a></li>
+                                        <li><a href="faq.html">Service client</a></li>
+                                        <li><a href="about.html">A Propos</a></li>
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="{{ path('product_search') }}">Search Terms</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <div class="footer-block collapsed-mobile">
+                                <div class="title">
+                                    <h4>MON COMPTE</h4>
+                                    <div class="toggle-arrow"></div>
+                                </div>
+                                <div class="collapsed-content">
+                                    <ul class="marker-list">
+                                        <li><a href="{{ path('fos_user_registration_register') }}">My account</a></li>
+                                        <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+                                        <li><a href="cart.html">Mon panier</a></li>
+                                        <li><a href="wishlist.html">Ma liste de course </a></li>
+                                        <li><a href="search.html">Rechercher un produit</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <div class="footer-block collapsed-mobile">
+                                <div class="title">
+                                    <h4>SERVICE CLIENT</h4>
+                                    <div class="toggle-arrow"></div>
+                                </div>
+                                <div class="collapsed-content">
+                                    <ul class="marker-list">
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="search.html">Recherche</a></li>
+                                        <li><a href="contact.html">Nous contacter</a></li>
+                                        <li><a href="faq.html">Service client</a></li>
+                                        <li><a href="about.html">A propos</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-lg-3">
+                            <div class="footer-block collapsed-mobile">
+                                <div class="title">
+                                    <h4>Nous contacter</h4>
+                                    <div class="toggle-arrow"></div>
+                                </div>
+                                <div class="collapsed-content">
+                                    <ul class="simple-list">
+                                        <li><i class="icon icon-phone"></i> +336 058 842</li>
+                                        <li><i class="icon icon-close-envelope"></i>
+                                            <a href="mailto:{{ mailer_user }}">{{ mailer_user }}</a>
+                                        </li>
+                                        <li><i class="icon icon-clock"></i>8:00 - 19:00, Lundi - Samedi</li>
+                                    </ul>
+                                    <div class="footer-social">
+                                        <a href="{{ path('homepage') }}">
+                                            <i class="icon icon-facebook-logo icon-circled"></i>
+                                        </a>
+                                        <a href="{{ path('homepage') }}">
+                                            <i class="icon icon-twitter-logo icon-circled"></i>
+                                        </a>
+                                        <a href="{{ path('homepage') }}">
+                                            <i class="icon icon-skype-logo icon-circled"></i>
+                                        </a>
+                                        <a href="{{ path('homepage') }}">
+                                            <i class="icon icon-vimeo icon-circled"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bot">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-8">
+                            <div class="image-banner text-center">
+                                <a href="{{ path('homepage') }}">
+                                    <img src="{{ asset('Assets/images/template_images/images/banners/footer-banner.jpg') }}"
+                                            alt="Footer Banner" class="img-responsive">
+                                </a>
+                            </div>
+                        </div>
+                        <div class=" col-md-6 col-lg-4">
+                            <div class="footer-copyright text-center"> © {{ "now"|date("Y") }}
+                                Global-Service-plus Store. All Rights Reserved.
+                            </div>
+                            <div class="footer-payment-link text-center">
+                                <img src="{{ asset('Assets/images/template_images/images/payment-logo/icon-pay-1.png') }}"
+                                     alt="">
+                                <img src="{{ asset('Assets/images/template_images/images/payment-logo/icon-pay-2.png') }}"
+                                     alt="">
+                                <img src="{{ asset('Assets/images/template_images/images/payment-logo/icon-pay-3.png') }}"
+                                     alt="">
+                                <img src="{{ asset('Assets/images/template_images/images/payment-logo/icon-pay-4.png') }}"
+                                     alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- /Footer -->
+        <a class="back-to-top back-to-top-mobile" href="{{ path('homepage') }}">
+            <i class="icon icon-angle-up"></i> Haut
+        </a>
+    </div>
+    <!-- Page Content -->
+</div>
+
+
+
+<!-- ProductStack  Ajout dans le panier -->
+<div class="productStack disable hide_on_scroll">
+    <a href="{{ path('homepage') }}" class="toggleStack">
+        {% if app.session.get('items') and  app.session.get('items') is not empty%}
+            {% set items= app.session.get('items') %}
+            {% set cart= app.session.get('cart') %}
+            {% else %}
+            {% set items=0 %}
+        {% endif %}
+        <i class="icon icon-cart"></i> {{ items }}</a>
+    {
+    <div class="productstack-content">
+        {% if app.session.get('gat_all_cart') is not empty%}
+        <div class="products-list-wrapper">
+            <ul class="products-list">
+                {% for cart_product  in app.session.get('gat_all_cart')%}
+                <li>
+                    <a href="{{ path('single_product', {'id': cart_product.id}) }}" title="Product Name Long Name">
+                        <img class="product-image-photo"
+                             src="{{ asset('Assets/images/template_images/images/products/product-10.jpg') }}" alt="">
+                    </a>
+                    <span class="item-qty">{{ cart[cart_product.id]['quantity'] }}</span>
+                    <div class="actions">
+                        <a href="{{ path('homepage') }}" class="action edit" title="Edit item">
+                            <i class="icon icon-pencil"></i></a>
+                        <a class="action delete" href="{{ path('homepage') }}" title="Delete item">
+                            <i class="icon icon-trash-alt"></i>
+                        </a>
+                        <div class="edit-qty">
+                            <label>
+                                <input type="number" value="{{ cart[cart_product.id]['quantity'] }}">
+                            </label>
+                            <button type="button" class="btn">Valider</button>
+                        </div>
+                    </div>
+                </li>
+             {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <div class="action-cart">
+            <button type="button" class="btn" title="Checkout"><span>Checkout</span></button>
+            <a href="{{ path('index_cart') }}" type="button" class="btn" title="Go to Cart"><span>Go to Cart</span></a>
+        </div>
+        <div class="total-cart">
+            <div class="items-total">Items <span class="count">{{ app.session.get('items') }}</span></div>
+            <div class="subtotal">Subtotal <span class="price">{{ app.session.get('total_price') }}</span></div>
+        </div>
+    </div>
+</div>
+<!-- /ProductStack -->
+
+<!-- Modal Quick View -->
+{{ include('@layouts_twig/content/modal_quick_view.html.twig') }}
+
+<!-- /Modal Quick View -->
+
+<!-- jQuery Scripts  -->
+<script src="{{ asset('libariries/jquery/jquery.js') }}"></script>
+<script src="{{ asset('libariries/bootstrap/dist/js/bootstrap.js') }}"></script>
+{{ include('@layouts_twig/footer/scripts.html.twig') }}
+{% block javascriptCustom %}{% endblock %}
+
+
+</body>
+
+</html>

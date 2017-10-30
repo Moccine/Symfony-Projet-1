@@ -1,0 +1,131 @@
+{% extends 'main_layout.html.twig' %}
+{% block content %}
+    <main class="page-main">
+        <div class="block">
+            <div class="container">
+                <ul class="breadcrumbs">
+                    <li><a href="{{ path('homepage') }}">
+                            <i class="icon icon-home"></i>
+                        </a
+                        ></li>
+                    <li>/<span>Search</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="block">
+            <div class="container">
+                <div class="h2-style">Rechercher:</div>
+                <form class="search-form white">
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                                <form action="{{ path('product_search') }}" method="post">
+                                    <div class="input-group input-group-lg">
+                                        <label for="product_search"></label>
+                                    <input type="search" class="form-control" name="product_search" placeholder="Rechercher un produit"/>
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn">Search</button>
+                                    </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="block bottom-space">
+            <div class="container">
+                <div class="products-grid four-in-row product-variant-5">
+                    {% if  searchResult is defined  and  searchResult is not null%}
+                    <!-- Product Item -->
+                    <div class="product-item large colorvariants category2">
+                        <div class="product-item-inside">
+                            <div class="product-item-info">
+                                <!-- Product Photo -->
+                                <div class="product-item-photo">
+                                    <!-- Product Label -->
+                                    <div class="product-item-label label-sale"><span>-20%</span></div>
+                                    <!-- /Product Label -->
+                                    <!-- product main photo -->
+                                    <div class="product-item-gallery-main">
+                                        <a href="#"><img class="product-image-photo" src="{{ asset('Assets/images/template_images/images/products/product-16-c1.jpg') }}" alt=""></a>
+                                        <a href="quick-view.html" title="Quick View" class="quick-view-link quick-view-btn"> <i class="icon icon-eye"></i><span>Quick View</span></a>
+                                    </div>
+                                    <!-- /product main photo  -->
+                                    <div class="countdown-box hidden-xs">
+                                        <div class="countdown-wrapper">
+                                            <div class="countdown-title">special price expires in</div>
+                                            <div class="countdown" data-promodate="2016/12/01"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Product Actions -->
+                                    <a href="#" title="Add to Wishlist" class="wishlist active"> <i class="icon icon-heart"></i><span>Add to Wishlist</span> </a>
+                                    <div class="product-item-actions">
+                                        <div class="share-button toBottom">
+                                            <span class="toggle"></span>
+                                            <ul class="social-list">
+                                                <li>
+                                                    <a href="#" class="icon icon-google google"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="icon icon-fancy fancy"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="icon icon-pinterest pinterest"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="icon icon-twitter-logo twitter"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="icon icon-facebook-logo facebook"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- /Product Actions -->
+                                    <ul class="color-swatch hidden-xs">
+                                        <li class="active">
+                                            <a data-image="images/products/product-16-c1.jpg" href="#"><img src="images/colorswatch/color-blue.png" alt="Blue"></a>
+                                        </li>
+                                        <li>
+                                            <a data-image="images/products/product-16-c2.jpg" href="#"><img src="images/colorswatch/color-grey.png" alt="Gray"></a>
+                                        </li>
+                                        <li>
+                                            <a data-image="images/products/product-16-c3.jpg" href="#"><img src="images/colorswatch/color-red.png" alt="Red"></a>
+                                        </li>
+                                        <li>
+                                            <a data-image="images/products/product-16-c4.jpg" href="#"><img src="images/colorswatch/color-violet.png" alt="Violet"></a>
+                                        </li>
+                                        <li>
+                                            <a data-image="images/products/product-16-c5.jpg" href="#"><img src="images/colorswatch/color-green.png" alt="Green"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /Product Photo -->
+                                <!-- Product Details -->
+                                <div class="product-item-details">
+                                    <div class="product-item-name"> <a title="Long sleeve overall" href="product.html" class="product-item-link">Long sleeve overall</a></div>
+                                    <div class="product-item-description">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia nonkdni numquam eius modi tempora incidunt ut labore</div>
+                                    <div class="price-box"> <span class="price-container"> <span class="price-wrapper"> <span class="old-price">$190.00</span> <span class="special-price">$149.00</span> </span>
+													</span>
+                                    </div>
+                                    <div class="product-item-rating"> <i class="icon icon-star-fill"></i><i class="icon icon-star-fill"></i><i class="icon icon-star-fill"></i><i class="icon icon-star-fill"></i><i class="icon icon-star-fill"></i></div>
+                                    <button class="btn add-to-cart" data-product="789123"> <i class="icon icon-cart"></i><span>Add to Cart</span> </button>
+                                </div>
+                                <!-- /Product Details -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Product Item -->
+                        {% else %}
+                        <h3> Pas de resultat</h3>
+                  {% endif %}
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contact</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contact.id }}</td>
+            </tr>
+            <tr>
+                <th>Emailfrom</th>
+                <td>{{ contact.emailfrom }}</td>
+            </tr>
+            <tr>
+                <th>Emailsend</th>
+                <td>{{ contact.emailsend }}</td>
+            </tr>
+            <tr>
+                <th>Contactbody</th>
+                <td>{{ contact.contactbody }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contact_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

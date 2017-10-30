@@ -36,7 +36,7 @@ class Phone
     private $lineType;
     /**
      *
-     * @ORM\OneToMany(targetEntity="User", mappedBy="phones")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="phones")
      */
     private $user;
 
@@ -138,5 +138,19 @@ class Phone
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Phone
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

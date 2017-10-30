@@ -1,0 +1,13 @@
+    <main class="page-main">
+        <div class="block fullheight empty-cart">
+            <div class="container">
+                <div class="image-empty-cart">
+                    <img src="{{ asset('Assets/images/template_images/images/empty-basket.png') }}" alt="">
+                    <div class="text-empty-cart-1">SHOPPING CART IS</div>
+                    <div class="text-empty-cart-2">EMPTY</div>
+                </div>
+                {% dump(app) %}
+                <div><a href="{{ path('homepage') }}" class="btn">back to previous page</a></div>
+            </div>
+        </div>
+    </main>

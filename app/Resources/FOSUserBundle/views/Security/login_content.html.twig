@@ -1,32 +1,56 @@
-{% trans_default_domain 'FOSUserBundle' %}
-
-{% if error %}
-    <div class="row">
-        <div class="label label-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-
+<main class="page-main">
+    <div class="block">
+        <div class="container">
+            <ul class="breadcrumbs">
+                <li>
+                    <a href="{{ path('homepage') }}">
+                        <i class="icon icon-home"></i>
+                    </a></li>
+                <li>/<span>Connexion</span></li>
+            </ul>
+        </div>
     </div>
-{% endif %}
-<div class="row">
-
-<form class="form" role="form" action="{{ path("fos_user_security_check") }}" id="login-nav" method="post">
-    {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-    {% endif %}
-    <div class="form-group">
-        <label class="sr-only" for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" class="form-control" id="username" placeholder="Username"  name="_username" value="{{ last_username }}" required="required" />
+    <div class="block">
+        <div class="container">
+            <div class="row row-eq-height">
+                <div class="col-sm-6">
+                    <div class="form-card">
+                        <h4>Nouveau Client</h4>
+                        <p>  En créant un compte avec notre boutique, vous serez en mesure de passer à travers le processus de paiement
+                            plus rapide, stockez plusieurs adresses de livraison, consultez et suivez vos commandes sur votre compte et
+                            plus.</p>
+                        <div><a href="{{ path('fos_user_registration_register') }}" class="btn btn-lg">
+                                <i class="icon icon-user"></i>
+                                <span>Créer un compte</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-card">
+                        <h4>Clients enregistrés</h4>
+                        <p>Si vous avez un compte chez nous, veuillez vous connecter.</p>
+                        <form class="account-create" method="post" action="{{ path("fos_user_security_check") }}">
+                            {% if csrf_token %}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            {% endif %}
+                            <div class="form-group">
+                                <label for="_username">E-mail<span class="required">*</span></label>
+                                <input name="_username" required="required" type="text" class="form-control input-lg" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <label for="_password">Password<span class="required">*</span></label>
+                                <input name="_password" required="required" type="password" class="form-control input-lg" placeholder="Password">
+                            </div>
+                            <div>
+                                <button class="btn btn-lg">Enregistrer</button>
+                                <span class="required-text">* Champs obligatoires</span>
+                            </div>
+                            <div class="back"><a href="{{ path('fos_user_change_password') }}">Mot de passe oublié?</a></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label class="sr-only" for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" class="form-control" required="required" />
-    </div>
-
-
-    <div class="checkbox">
-        <label for="remember_me">
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    {{ 'security.login.remember_me'|trans }}</label>
-    </div>
-    <button class="btn btn-default" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" >{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
-</form>
-</div>
+</main>

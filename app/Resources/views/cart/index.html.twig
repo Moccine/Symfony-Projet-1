@@ -1,0 +1,24 @@
+{% extends 'main_layout.html.twig' %}
+{% block content %}
+    <main class="page-main">
+        <div class="block">
+            <div class="container">
+                <ul class="breadcrumbs">
+                    <li><a href="{{ path('homepage') }}">
+                            <i class="icon icon-home"></i>
+                        </a>
+                    </li>
+                    <li>/<span>Panier</span></li>
+                </ul>
+            </div>
+        </div>
+    {% if cart is defined and cart is not null and cart is not empty%}
+
+            <div class="block">
+              {{ include('cart/allCart.html.twig') }}
+            </div>
+   {% else %}
+        {{ include('cart/cart-empty.html.twig') }}
+       {% endif %}
+    </main>
+{% endblock %}

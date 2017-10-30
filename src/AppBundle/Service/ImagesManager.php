@@ -20,9 +20,13 @@ class ImagesManager
         $this->targetDir = $targetDir;
     }
 
+    /**
+     * @param UploadedFile $file
+     * @return string
+     */
     public function upload(UploadedFile $file)
     {
-        //creation de du nom
+        //creation  de nom
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
 
         $file->move($this->getTargetDir(), $fileName);
@@ -30,6 +34,10 @@ class ImagesManager
         return $fileName;
     }
 
+    /**
+     * @param $filename
+     * @return bool
+     */
     public  function removeFile($filename){
         $target=$this->targetDir.'/'.$filename;
         if(file_exists($target)){
@@ -38,6 +46,10 @@ class ImagesManager
         }
         return false;
     }
+
+    /**
+     * @return mixed
+     */
     public function getTargetDir()
     {
         return $this->targetDir;

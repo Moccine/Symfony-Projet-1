@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
-{% block body %}
+{% extends 'main_layout.html.twig' %}
+{% block content %}
 
     <div class="container">
         <h2>Ajouter </h2>
         <hr>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-lg-offset-3">
                 {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
                 {{ form_row(form.filename) }}
                 {{ form_row(form.alt) }}
@@ -19,5 +19,6 @@
                 {{ form_end(form) }}
             </div>
         </div>
+        <div class="row"></div>
     </div>
 {% endblock %}

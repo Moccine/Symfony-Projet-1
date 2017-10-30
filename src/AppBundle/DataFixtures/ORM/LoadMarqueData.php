@@ -28,6 +28,7 @@ class LoadMarqueData extends AbstractFixture implements OrderedFixtureInterface
         for ($i=0; $i<count($data); $i++){
             $marque = new Marque();
             $marque->setName($data[$i]);
+            $marque->setSlug($this->slugfy($data[$i]));
             $marque->setDescription($data[$i]);
             $marque->setAuthor($data[$i]);
             $manager->persist($marque);
@@ -69,5 +70,21 @@ class LoadMarqueData extends AbstractFixture implements OrderedFixtureInterface
     public function getOrder()
     {
         return 1;
+    }
+
+    public  function  slugfy($str){
+        $str=htmlspecialchars_decode(($str));
+        $str=str_replace('é', 'e', $str);
+        $str=str_replace('è', 'e', $str);
+        $str=str_replace('ô', 'o', $str);
+        $str=str_replace('â', 'a', $str);
+        $str=explode(" ", $str);
+        $str=array_map('trim', $str);
+        if (($key = array_search('-', $str)) !== false) {
+            unset($str[$key]);
+        }
+        $str=implode('-', $str);
+
+        return strtolower($str);
     }
 }

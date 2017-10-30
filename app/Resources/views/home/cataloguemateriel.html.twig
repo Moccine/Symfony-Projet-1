@@ -1,0 +1,13 @@
+<div class="col">
+    <ul class="category-links">
+        {% for mat in marque %}
+        <li><a href="{{ path('marque_show', {'slug': mat.slug}) }}">{{ mat.name }}</a></li>
+        {% if loop.index!=0 and  loop.index%3 ==0 %}
+    </ul>
+</div>
+<div class="col">
+    <ul class="category-links">
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>

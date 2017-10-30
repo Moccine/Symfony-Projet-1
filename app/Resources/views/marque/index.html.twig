@@ -1,0 +1,73 @@
+{% extends 'main_layout.html.twig' %}
+{% block content %}
+    <main class="page-main">
+        <div class="block">
+            <div class="container">
+                <ul class="breadcrumbs">
+                    <li><a href="{{ path('homepage') }}">
+                            <i class="icon icon-home"></i></a></li>
+                    <li>/<span>Marques Informatiques</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Two columns -->
+            <div class="row">
+                <!-- Left column -->
+                <div class="col-md-3 filter-col aside">
+                    <div class="fixed-wrapper">
+                        <div class="fixed-scroll">
+                            <div class="filter-col-content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Left column -->
+                <!-- Center column -->
+                <div class="col-md-9 aside">
+                    <!-- Page Title -->
+                    <div class="page-title">
+                        <div class="title center">
+                            <h1>Marques Informatiques</h1>
+                        </div>
+                    </div>
+                    <!-- /Page Title -->
+                    <!-- Banners -->
+                    <div class="row">
+                        {% for marque in marques %}
+                            <div class="col-sm-4">
+                                <a href="{{ path('marque_show', {'slug': marque.slug,'page': "1", 'limit': "12"}) }}" class="banner-wrap">
+                                    <div class="banner style-9 autosize-text image-hover-scale" data-fontratio="6.4">
+                                        <img src="{{ asset('Assets/images/template_images/images/banners/banner-category-1.jpg') }}" alt="Banner">
+                                        <div class="banner-caption vertb">
+                                            <div class="vert-wrapper">
+                                                <div class="vert">
+                                                    <div class="text-1 text-hoverslide" data-hcolor="#ffffff">
+                                                    <span>
+                                                        <span class="text">{{ marque.name }}</span>
+                                                        <span class="hoverbg"></span>
+                                                    </span>
+                                                    </div>
+                                                    <div class="text-2">{{ marque.description|slice(0, 200) }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- /Banners -->
+                    <!-- marques Info -->
+                    <div class="info-block">
+                        <p>iam, quis nostrud exercitation ullamco laboris nisi ut aliqui.</p>
+                    </div>
+
+                </div>
+                <!-- /Center column -->
+            </div>
+            <!-- /Two columns -->
+        </div>
+    </main>
+
+{% endblock %}

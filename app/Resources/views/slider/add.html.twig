@@ -1,0 +1,21 @@
+{% extends 'main_layout.html.twig' %}
+{% block content %}
+    <div class="conainer">
+
+        {{ form_start(form, {'action': path('add_slider'), 'method': 'POST'}) }}
+
+        <div class="col-lg-6">
+
+            {{ form_row(form.figure) }}
+        </div>
+        <div class="col-lg-6">
+            {{ form_row(form) }}
+        </div>
+
+        <a href="#" class="btn" id="add-another-email">Add another email</a>
+        <button type="submit" class="btn btn-block btn-primary">valider</button>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}
+

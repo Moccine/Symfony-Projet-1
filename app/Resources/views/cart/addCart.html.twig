@@ -1,0 +1,5 @@
+{% extends 'main_layout.html.twig' %}
+{% block content %}
+{% set cart = app.session.get('cart') %}
+ {{ dump(cart) }}
+{% endblock %}

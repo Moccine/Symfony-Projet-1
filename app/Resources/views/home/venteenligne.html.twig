@@ -1,0 +1,12 @@
+{% for vente in venteenligne %}
+    <div class="col">
+        <a class="category-image" href="{{ path('venteenligne_show', {'slug': vente.slug}) }}">
+            <img src="{{ asset('Assets/images/template_images/images/category/megamenu-category-03.jpg')}}" alt />
+        </a>
+        <div class="category-title">
+            <a  href="{{ path('venteenligne_show', {'slug': vente.slug}) }}">
+                {{ vente.name }}
+            </a>
+        </div>
+    </div>
+{% endfor %}

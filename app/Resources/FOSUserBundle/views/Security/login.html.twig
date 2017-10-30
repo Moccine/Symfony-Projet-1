@@ -1,7 +1,5 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-<div class="col-lg-6 col-lg-offset-3">
-{{ include('@FOSUser/Security/login_content.html.twig') }}
-</div>
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
 {% endblock fos_user_content %}

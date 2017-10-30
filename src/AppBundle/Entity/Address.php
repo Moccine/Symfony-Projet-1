@@ -58,7 +58,7 @@ class Address
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="address")
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="address")
      */
     private $user;
     /**

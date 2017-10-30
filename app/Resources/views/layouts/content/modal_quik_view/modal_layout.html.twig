@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{ include('@layouts_twig/head/head.html.twig') }}
+
+
+<!-- jQuery Scripts  -->
+<script src="{{ asset('libariries/jquery/jquery.js') }}"></script>
+<script src="{{ asset('libariries/bootstrap/dist/js/bootstrap.js') }}"></script>
+{{ include('@layouts_twig/footer/scripts.html.twig') }}
+{% block content %}
+
+{% endblock %}
+
+</html>

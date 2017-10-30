@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * Product
  *
@@ -24,7 +25,7 @@ class Product
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Champ Nom obligatoire")
+     * @Assert\NotBlank(message="Champ  obligatoire")
      * @ORM\Column(name="name", type="string", length=100)
      */
     private $name;
@@ -35,6 +36,13 @@ class Product
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Marque", inversedBy="product")
+     * @ORM\JoinColumn(name="MARQUE_id", referencedColumnName="id")
+     */
+    private $marque;
 
     /**
      * @var float
@@ -51,23 +59,46 @@ class Product
     private $description;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="alwaysonsale", type="boolean")
+     */
+    private $alwaysonsale;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="stock", type="integer")
+     */
+    private $stock;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="caracterisques", type="text")
      */
     private $caracterisques;
-
     /**
-     * @var string
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="product")
+     * @var boolean
+     *
+     * @ORM\Column(name="venteenligne", type="boolean")
      */
-    private $images;
+    private $venteenligne;
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Marque")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Options", cascade={"persist", "remove"})
      */
-    private $marque;
+    private $options;
+
+    /**
+     * @var string
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="product", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $images;
+
+
 
 
 
@@ -220,7 +251,7 @@ class Product
     public function addImage(\AppBundle\Entity\Image $image)
     {
         $this->images[] = $image;
-
+       $image->setProduct($this);
         return $this;
     }
 
@@ -267,8 +298,125 @@ class Product
     {
         return $this->marque;
     }
-    public  function __toString()
+
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Product
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
     {
-        return $this->name;
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set options
+     *
+     * @param \AppBundle\Entity\Options $options
+     *
+     * @return Product
+     */
+    public function setOptions(\AppBundle\Entity\Options $options )
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    /**
+     * Get options
+     *
+     * @return \AppBundle\Entity\Options
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Set alwaysonsale
+     *
+     * @param boolean $alwaysonsale
+     *
+     * @return Product
+     */
+    public function setAlwaysonsale($alwaysonsale)
+    {
+        $this->alwaysonsale = $alwaysonsale;
+
+        return $this;
+    }
+
+    /**
+     * Get alwaysonsale
+     *
+     * @return boolean
+     */
+    public function getAlwaysonsale()
+    {
+        return $this->alwaysonsale;
+    }
+
+    /**
+     * Set stock
+     *
+     * @param integer $stock
+     *
+     * @return Product
+     */
+    public function setStock($stock)
+    {
+        $this->stock = $stock;
+
+        return $this;
+    }
+
+    /**
+     * Get stock
+     *
+     * @return integer
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * Set venteenligne
+     *
+     * @param boolean $venteenligne
+     *
+     * @return Product
+     */
+    public function setVenteenligne($venteenligne)
+    {
+        $this->venteenligne = $venteenligne;
+
+        return $this;
+    }
+
+    /**
+     * Get venteenligne
+     *
+     * @return boolean
+     */
+    public function getVenteenligne()
+    {
+        return $this->venteenligne;
     }
 }

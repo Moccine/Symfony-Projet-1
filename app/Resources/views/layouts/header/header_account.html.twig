@@ -1,0 +1,23 @@
+<div class="header-link dropdown-link header-account">
+    <a href="{{ path('fos_user_security_login') }}">
+        <i class="icon icon-user"></i>
+    </a>
+    <div class="dropdown-container right">
+        {% if  app.user is null%}
+            <div>
+                <a href="{{ path('fos_user_security_login') }}" type="submit" class="btn">Se connecter</a>
+            </div>
+            <div>
+                <a href="{{ path('fos_user_registration_register') }}" type="submit" class="btn">s'inscrire</a>
+
+            </div>
+            {% else %}
+                <div>
+                    <a href="{{ path('fos_user_security_logout') }}" class="btn">Se deconnecter</a>
+                </div>
+                <div>
+                    <a href="{{ path('fos_user_profile_show') }}" class="btn">profil</a>
+                </div>
+        {% endif %}
+    </div>
+</div>

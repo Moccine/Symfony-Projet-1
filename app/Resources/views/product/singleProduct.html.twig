@@ -1,0 +1,429 @@
+{% extends 'main_layout.html.twig' %}
+{% block content %}
+    {% if singleProduct is defined %}
+        {% set  currency=app.session.get('currency') %}
+        <main class="page-main">
+            <div class="block">
+                <div class="container">
+                    <ul class="breadcrumbs">
+                        <li><a href="{{ path('homepage') }}">
+                                <i class="icon icon-home"></i>
+                            </a>
+                        </li>
+                        <li>/<a href="#">PC</a></li>
+                        <li>/<span>{{ singleProduct.name }}</span></li>
+                        <li class="product-nav">
+                            <i class="icon icon-angle-left"></i>
+                            <a href="{{ path('single_product', {'id': singleProduct.id + 1}) }} }}"
+                               class="product-nav-prev">produit precedent
+                                <span class="product-nav-preview">
+										<span class="image">
+                                            <img src="{{ asset('Assets/images/template_images/images/products/product-prev-preview.jpg') }}"
+                                                 alt="">
+                                            <span class="price"> {{ currency['currency'] }} {{ singleProduct.price }}</span></span>
+										<span class="name">Black swimsuit</span>
+									</span></a>/
+                            <a href="{{ path('single_product', {'id': singleProduct.id + 1}) }}"
+                               class="product-nav-next">product suivant<span class="product-nav-preview">
+										<span class="image">
+                                            <img src="{{ asset('Assets/images/template_images/images/products/product-next-preview.jpg') }}"
+                                                 alt=""><span class="price">{{ currency['currency'] }} 280</span></span>
+										<span class="name">Black swimsuit</span>
+									</span></a><i class="icon icon-angle-right"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block product-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-5 col-md-3 col-lg-3">
+                            <!-- Product Gallery -->
+                            <div class="main-image">
+                                <img src="{{ asset('Assets/images/template_images/images/products/large/product-gallery-1.jpg') }}"
+                                     class="zoom" alt="" data-zoom-image="images/products/large/product-gallery-1.jpg"/>
+                                <div class="dblclick-text">
+                                    <span>Double click for enlarge</span>
+                                </div>
+                                <a href="http://www.youtube.com/watch?v=qZeeMm35LXo" class="video-link"><i
+                                            class="icon icon-film"></i></a>
+                                <a href="{{ asset('Assets/images/template_images/images/products/large/product-gallery-1.jpg') }}"
+                                   class="zoom-link"><i class="icon icon-zoomin"></i></a>
+                            </div>
+                            <div class="product-previews-wrapper">
+                                <div class="product-previews-carousel" id="previewsGallery">
+                                    <a href="#"
+                                       data-image="{{ asset('Assets/images/template_images/images/products/large/product-gallery-1.jpg') }}"
+                                       data-zoom-image="images/products/large/product-gallery-1.jpg">
+                                        <img src="{{ asset('Assets/images/template_images/images/products/large/product-gallery-3.jpg') }}"
+                                             alt=""/></a>
+                                    <a href="#"
+                                       data-image="{{ asset('Assets/images/template_images/images/products/large/product-gallery-2.jpg') }}"
+                                       data-zoom-image="images/products/large/product-gallery-2.jpg">
+                                        <img src="{{ asset('Assets/images/template_images/images/products/large/product-gallery-2.jpg') }}"
+                                             alt=""/></a>
+                                    <a href="#"
+                                       data-image="{{ asset('Assets/images/template_images/images/products/large/product-gallery-3.jpg') }}"
+                                       data-zoom-image="images/products/large/product-gallery-3.jpg">
+                                        <img src="{{ asset('Assets/images/template_images/images/products/large/product-gallery-3.jpg') }}"
+                                             alt=""/>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- /Product Gallery -->
+                        </div>
+                        <div class="col-sm-7 col-md-9 col-lg-6">
+                            <div class="product-info-block classic">
+                                <div class="product-info-top">
+                                    {% if singleProduct.options.notes!=0 %}
+                                        <div class="product-sku">SKU: <span>Notes</span></div>
+                                        <div class="rating">
+                                            {% for i in 1..singleProduct.options.notes %}
+                                                <i class="icon icon-star fill"></i>
+                                            {% endfor %}
+                                            <span class="count">248 reviews</span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="product-name-wrapper">
+                                    <h1 class="product-name">{{ singleProduct.name }}</h1>
+                                    <h3>{{ singleProduct.category.name }}
+                                        <small class="menu-label-alt">{{ singleProduct.marque }}</small>
+                                    </h3>
+                                    <div class="product-labels">
+                                        {% if singleProduct.options.state=='sale' %}
+                                            <small class="menu-label sale">Meilleur vente</small>
+                                        {% endif %}
+                                        {% if singleProduct.options.state=='new' %}
+                                            <span class="product-label new">NEW</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% if singleProduct.stock is defined %}
+                                    {% set stock= (singleProduct.stock ==0) ? 'Epuisé' : 'En stock' %}
+                                {% endif %}
+                                <div class="product-availability">Disponibilité: <span>{{ stock }}</span></div>
+                                <div class="product-description">
+                                    <p>{{ singleProduct.description }} </p>
+                                </div>
+                                {% if singleProduct.options.promo.id is defined %}
+                                    <div class="countdown-circle hidden-xs">
+                                        <div class="countdown-wrapper">
+
+                                            <div class="countdown" data-promoperiod="2018-01-05"></div>
+                                            <div class="countdown-text">
+                                                <div class="text1">Solde {{ singleProduct.options.promo.discounts }}%
+                                                </div>
+                                                {% if singleProduct.stock is defined and  singleProduct.stock >0 %}
+                                                    <div class="text2"> Dépêchez-vous, il ne reste plus que
+                                                        <span>{{ singleProduct.stock }}</span> article (s)!
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="product-actions">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="social">
+                                                <div class="share-button toLeft">
+                                                    <span class="toggle">Partager</span>
+                                                    <ul class="social-list">
+                                                        <li>
+                                                            <a href="#" class="icon icon-google google"></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="icon icon-fancy fancy"></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="icon icon-pinterest pinterest"></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="icon icon-twitter-logo twitter"></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="icon icon-facebook-logo facebook"></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="price">
+                                                <span class="old-price">
+                                                    <span>{{ currency['symbol-currency'] }}140.00</span>
+                                                </span>
+                                                <span class="special-price">
+                                                    {{ currency['symbol-currency'] }}
+                                                    <span>{{ singleProduct.price }}</span>
+                                                    </span>
+                                            </div>
+                                            <div class="actions">
+                                                <a href="{{ path('add_to_cart', {'new_id': singleProduct.id}) }}"
+                                                   data-loading-text='<i class="icon icon-spinner spin"></i><span>Add to cart</span>'
+                                                   class="btn btn-lg btn-loading">
+                                                    <i class="icon icon-cart"></i>
+                                                    <span>Ajouter</span>
+                                                </a>
+                                                <a href="#" class="btn btn-lg product-details">
+                                                    <i class="icon icon-external-link"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-3 hidden-quickview">
+                            <div class="box-icon-row">
+                                <div class="box-left-icon-bg">
+                                    <div class="box-icon"><i class="icon icon-gift"></i></div>
+                                    <div class="box-text">
+                                        <div class="title">Nos offres </div>
+                                    </div>
+                                </div>
+                                <div class="box-left-icon-bg">
+                                    <div class="box-icon">
+                                        <i class="icon icon-dollar-bills"></i>
+                                    </div>
+                                    <div class="box-text">
+                                        <div class="title">Carte de fidelité</div>
+                                    </div>
+                                </div>
+                                <div class="box-left-icon-bg">
+                                    <div class="box-icon">
+                                        <i class="icon icon-undo"></i>
+                                    </div>
+                                    <div class="box-text">
+                                        <div class="title">Service Client</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="tabaccordion">
+                    <div class="container">
+                        <!-- Nav tabs -->
+                        <ul class="nav-tabs product-tab" role="tablist">
+                            <li><a href="#Tab1" role="tab" data-toggle="tab">Description</a></li>
+                            <li>
+                                <a href="#Tab2" role="tab" data-toggle="tab">Informations générales sur le produit </a>
+                            </li>
+                            <li>
+                                <a href="#Tab3" role="tab" data-toggle="tab">Général</a>
+                            </li>
+                            <li>
+                                <a href="#Tab4" role="tab" data-toggle="tab">diver</a>
+                            </li>
+
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane" id="Tab1">
+                                <p>{{ singleProduct.description }}</p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="Tab2">
+                                <h3 class="custom-color">Take a trivial example which of us ever undertakes</h3>
+                                <p>Nor again is there anyone who loves or pursues or desires to obtain pain of itself,
+                                    because it is pain, but because occasionally circumstances occur in which toil and
+                                    pain
+                                    can procure him some great pleasure. To take a trivial example, which of us ever
+                                    undertakes laborious physical exercise, except to obtain some advantage from it? But
+                                    who
+                                    has any right to find fault with a man who chooses to enjoy a pleasure that has no
+                                    annoying consequences, or one who avoids a pain that produces no resultant
+                                    pleasure </p>
+                                <ul class="marker-simple-list two-columns">
+                                    <li>Nam liberempore</li>
+                                    <li>Cumsoluta nobisest</li>
+                                    <li>Eligendptio cumque</li>
+                                    <li>Nam liberempore</li>
+                                    <li>Cumsoluta nobisest</li>
+                                    <li>Eligendptio cumque</li>
+                                </ul>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="Tab3">
+                                <h3>Single Size Conversion</h3>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <td><strong>Poids</strong></td>
+                                            <td> </td>
+                                            <td>en gramme </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Dimensions</strong></td>
+                                            <td> longueur </td>
+                                            <td> largeur </td>
+                                            <td> hauteur </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Batterie</strong></td>
+                                            <td> </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Entrée</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Logiciel</strong></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><strong>connexion et extension<strong></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Mémoire</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Affichage</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Processeur</strong></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="Tab4">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="block ">
+                    <div class="container">
+                        <div class="title">
+                            <h2 class="h-bg">Produits similaires</h2>
+                            <div class="carousel-arrows"></div>
+                        </div>
+                        <div class="products-grid products-carousel carousel-negative product-variant-2 featured-products">
+                            <!-- Product Item -->
+                            {% if prodSims is defined %}
+                                {% for prod in prodSims %}
+                                    <div class="product-item large">
+                                        <div class="product-item-inside">
+                                            <div class="product-item-info">
+                                                <!-- Product Photo -->
+                                                <div class="product-item-photo">
+                                                    <!-- product inside carousel -->
+                                                    <div class="carousel-inside slide" data-ride="carousel">
+                                                        <div class="carousel-inner" role="listbox">
+                                                            <div class="item active">
+                                                                <a href="{{ path('single_product', {'id': singleProduct.id}) }}">
+                                                                    <img class="product-image-photo"
+                                                                                 src="{{ asset('Assets/images/template_images/images/products/product-1-1.jpg') }}"
+                                                                                 alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="{{ path('single_product', {'id': singleProduct.id}) }}">
+                                                                    <img class="product-image-photo"
+                                                                                 src="{{ asset('Assets/images/template_images/images/products/product-1-1.jpg') }}"
+                                                                                 alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="item">
+                                                                <a href="{{ path('single_product', {'id': singleProduct.id}) }}">
+                                                                    <img class="product-image-photo"
+                                                                                 src="{{ asset('Assets/images/template_images/images/products/product-1-2.jpg') }}"
+                                                                                 alt=""></a>
+                                                            </div>
+                                                        </div>
+                                                        <a class="carousel-control next"></a>
+                                                        <a class="carousel-control prev"></a>
+                                                    </div>
+                                                    <!-- /product inside carousel -->
+                                                    <!-- Product Actions -->
+                                                    <div class="product-item-actions">
+                                                        <div class="actions-primary">
+                                                            <button class="btn btn-sm btn-invert add-to-cart"><i
+                                                                        class="icon icon-cart"></i><span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="actions-secondary">
+                                                            <a href="#" title="Link" class="sharing"> <i
+                                                                        class="icon icon-share"></i> </a>
+                                                            <a href="{{ path('product_quickView') }}" class="quick-view-link"
+                                                               title="Quick View">
+                                                                <i class="icon icon-eye"></i>
+                                                            </a>
+                                                            <a href="#" title="Compare"> <i
+                                                                        class="icon icon-balance"></i> </a>
+                                                            <a href="#" title="Wish List" class="wishlist active"> <i
+                                                                        class="icon icon-heart"></i> </a>
+                                                        </div>
+                                                        <ul class="social-list">
+                                                            <li>
+                                                                <a href="#" class="icon icon-google google"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="icon icon-fancy fancy"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="icon icon-pinterest pinterest"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="icon icon-twitter-logo twitter"></a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"
+                                                                   class="icon icon-facebook-logo facebook"></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- /Product Actions -->
+                                                </div>
+                                                <!-- /Product Photo -->
+                                                <!-- Product Details -->
+                                                <div class="product-item-details">
+                                                    <div class="product-item-name"><a title="Boyfriend Short"
+                                                                                      href="{{ path('single_product', {'id': prod.id}) }}"
+                                                                                      class="product-item-link"> {{ prod.name |slice(0, 20) }}</a>
+                                                    </div>
+                                                    <div class="product-item-description">{{ prod.description |slice(0, 100)}}
+                                                    </div>
+                                                    <div class="price-box"> <span class="price-container"> <span
+                                                                    class="price-wrapper"><span
+                                                                        class="special-price">{{ currency['symbol-currency'] }} {{ prod.price }}</span> </span>
+												</span>
+                                                    </div>
+                                                    <!-- Product Actions -->
+                                                    <div class="product-item-actions">
+                                                        <div class="actions-primary">
+                                                            <button class="btn btn-sm btn-invert add-to-cart"><i
+                                                                        class="icon icon-cart"></i><span>Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Product Actions -->
+                                                </div>
+                                                <!-- /Product Details -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <!-- /Product Item -->
+
+                            <!-- /Product Item -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    {% endif %}
+{% endblock %}
