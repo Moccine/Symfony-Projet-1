@@ -59,6 +59,13 @@ class Product
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="text")
+     */
+    private $slug;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="alwaysonsale", type="boolean")
@@ -83,7 +90,7 @@ class Product
      *
      * @ORM\Column(name="venteenligne", type="boolean")
      */
-    private $venteenligne;
+    private $venteenligne=true;
 
     /**
      *
@@ -418,5 +425,29 @@ class Product
     public function getVenteenligne()
     {
         return $this->venteenligne;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Product
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

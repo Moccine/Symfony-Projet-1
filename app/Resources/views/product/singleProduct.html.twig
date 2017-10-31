@@ -2,6 +2,7 @@
 {% block content %}
     {% if singleProduct is defined %}
         {% set  currency=app.session.get('currency') %}
+
         <main class="page-main">
             <div class="block">
                 <div class="container">
@@ -18,7 +19,7 @@
                                class="product-nav-prev">produit precedent
                                 <span class="product-nav-preview">
 										<span class="image">
-                                            <img src="{{ asset('Assets/images/template_images/images/products/product-prev-preview.jpg') }}"
+                                            <img src="{{ vich_uploader_asset(singleProduct.images.first, 'file') }}"
                                                  alt="">
                                             <span class="price"> {{ currency['currency'] }} {{ singleProduct.price }}</span></span>
 										<span class="name">Black swimsuit</span>
@@ -40,34 +41,31 @@
                         <div class="col-sm-5 col-md-3 col-lg-3">
                             <!-- Product Gallery -->
                             <div class="main-image">
-                                <img src="{{ asset('Assets/images/template_images/images/products/large/product-gallery-1.jpg') }}"
-                                     class="zoom" alt="" data-zoom-image="images/products/large/product-gallery-1.jpg"/>
+                                {% if singleProduct.images is defined %}
+                                    <img src="{{ vich_uploader_asset(singleProduct.images.first, 'file') }}"
+                                         class="zoom" alt=""
+                                         data-zoom-image="images/products/large/product-gallery-1.jpg"/>
+                                {% endif %}
+
                                 <div class="dblclick-text">
                                     <span>Double click for enlarge</span>
                                 </div>
-                                <a href="http://www.youtube.com/watch?v=qZeeMm35LXo" class="video-link"><i
-                                            class="icon icon-film"></i></a>
-                                <a href="{{ asset('Assets/images/template_images/images/products/large/product-gallery-1.jpg') }}"
+                                <a href="http://www.youtube.com/watch?v=qZeeMm35LXo" class="video-link">
+                                    <i class="icon icon-film"></i>
+                                </a>
+                                <a href="{{ vich_uploader_asset(singleProduct.images.first, 'file') }}"
                                    class="zoom-link"><i class="icon icon-zoomin"></i></a>
                             </div>
                             <div class="product-previews-wrapper">
                                 <div class="product-previews-carousel" id="previewsGallery">
-                                    <a href="#"
-                                       data-image="{{ asset('Assets/images/template_images/images/products/large/product-gallery-1.jpg') }}"
-                                       data-zoom-image="images/products/large/product-gallery-1.jpg">
-                                        <img src="{{ asset('Assets/images/template_images/images/products/large/product-gallery-3.jpg') }}"
-                                             alt=""/></a>
-                                    <a href="#"
-                                       data-image="{{ asset('Assets/images/template_images/images/products/large/product-gallery-2.jpg') }}"
-                                       data-zoom-image="images/products/large/product-gallery-2.jpg">
-                                        <img src="{{ asset('Assets/images/template_images/images/products/large/product-gallery-2.jpg') }}"
-                                             alt=""/></a>
-                                    <a href="#"
-                                       data-image="{{ asset('Assets/images/template_images/images/products/large/product-gallery-3.jpg') }}"
-                                       data-zoom-image="images/products/large/product-gallery-3.jpg">
-                                        <img src="{{ asset('Assets/images/template_images/images/products/large/product-gallery-3.jpg') }}"
-                                             alt=""/>
-                                    </a>
+                                    {% for img in singleProduct.images %}
+                                        <a href="#"
+                                           data-image="{{ vich_uploader_asset(img, 'file') }}"
+                                           data-zoom-image="{{ vich_uploader_asset(img, 'file') }}">
+                                            <img src="{{ vich_uploader_asset(img, 'file') }}"
+                                                 alt=""/>
+                                        </a>
+                                    {% endfor %}
                                 </div>
                             </div>
                             <!-- /Product Gallery -->
@@ -75,7 +73,7 @@
                         <div class="col-sm-7 col-md-9 col-lg-6">
                             <div class="product-info-block classic">
                                 <div class="product-info-top">
-                                    {% if singleProduct.options.notes!=0 %}
+                                    {% if singleProduct.options.notes is defined and singleProduct.options.notes is not null %}
                                         <div class="product-sku">SKU: <span>Notes</span></div>
                                         <div class="rating">
                                             {% for i in 1..singleProduct.options.notes %}
@@ -86,15 +84,19 @@
                                     {% endif %}
                                 </div>
                                 <div class="product-name-wrapper">
+
+
                                     <h1 class="product-name">{{ singleProduct.name }}</h1>
                                     <h3>{{ singleProduct.category.name }}
                                         <small class="menu-label-alt">{{ singleProduct.marque }}</small>
                                     </h3>
                                     <div class="product-labels">
-                                        {% if singleProduct.options.state=='sale' %}
+
+                                        {% if singleProduct.options.state is defined and singleProduct.options.state is not null  and singleProduct.options.state=='sale' %}
                                             <small class="menu-label sale">Meilleur vente</small>
                                         {% endif %}
-                                        {% if singleProduct.options.state=='new' %}
+
+                                        {% if singleProduct.options.state is defined and singleProduct.options.state is not null  and singleProduct.options.state=='new' %}
                                             <span class="product-label new">NEW</span>
                                         {% endif %}
                                     </div>
@@ -180,7 +182,7 @@
                                 <div class="box-left-icon-bg">
                                     <div class="box-icon"><i class="icon icon-gift"></i></div>
                                     <div class="box-text">
-                                        <div class="title">Nos offres </div>
+                                        <div class="title">Nos offres</div>
                                     </div>
                                 </div>
                                 <div class="box-left-icon-bg">
@@ -253,18 +255,18 @@
                                         <tbody>
                                         <tr>
                                             <td><strong>Poids</strong></td>
-                                            <td> </td>
-                                            <td>en gramme </td>
+                                            <td></td>
+                                            <td>en gramme</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Dimensions</strong></td>
-                                            <td> longueur </td>
-                                            <td> largeur </td>
-                                            <td> hauteur </td>
+                                            <td> longueur</td>
+                                            <td> largeur</td>
+                                            <td> hauteur</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Batterie</strong></td>
-                                            <td> </td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Entrée</strong></td>
@@ -324,22 +326,22 @@
                                                             <div class="item active">
                                                                 <a href="{{ path('single_product', {'id': singleProduct.id}) }}">
                                                                     <img class="product-image-photo"
-                                                                                 src="{{ asset('Assets/images/template_images/images/products/product-1-1.jpg') }}"
-                                                                                 alt="">
+                                                                         src="{{ asset('Assets/images/template_images/images/products/product-1-1.jpg') }}"
+                                                                         alt="">
                                                                 </a>
                                                             </div>
                                                             <div class="item">
                                                                 <a href="{{ path('single_product', {'id': singleProduct.id}) }}">
                                                                     <img class="product-image-photo"
-                                                                                 src="{{ asset('Assets/images/template_images/images/products/product-1-1.jpg') }}"
-                                                                                 alt="">
+                                                                         src="{{ asset('Assets/images/template_images/images/products/product-1-1.jpg') }}"
+                                                                         alt="">
                                                                 </a>
                                                             </div>
                                                             <div class="item">
                                                                 <a href="{{ path('single_product', {'id': singleProduct.id}) }}">
                                                                     <img class="product-image-photo"
-                                                                                 src="{{ asset('Assets/images/template_images/images/products/product-1-2.jpg') }}"
-                                                                                 alt=""></a>
+                                                                         src="{{ asset('Assets/images/template_images/images/products/product-1-2.jpg') }}"
+                                                                         alt=""></a>
                                                             </div>
                                                         </div>
                                                         <a class="carousel-control next"></a>
@@ -356,7 +358,8 @@
                                                         <div class="actions-secondary">
                                                             <a href="#" title="Link" class="sharing"> <i
                                                                         class="icon icon-share"></i> </a>
-                                                            <a href="{{ path('product_quickView') }}" class="quick-view-link"
+                                                            <a href="{{ path('product_quickView') }}"
+                                                               class="quick-view-link"
                                                                title="Quick View">
                                                                 <i class="icon icon-eye"></i>
                                                             </a>
@@ -393,7 +396,7 @@
                                                                                       href="{{ path('single_product', {'id': prod.id}) }}"
                                                                                       class="product-item-link"> {{ prod.name |slice(0, 20) }}</a>
                                                     </div>
-                                                    <div class="product-item-description">{{ prod.description |slice(0, 100)}}
+                                                    <div class="product-item-description">{{ prod.description |slice(0, 100) }}
                                                     </div>
                                                     <div class="price-box"> <span class="price-container"> <span
                                                                     class="price-wrapper"><span

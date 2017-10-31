@@ -18,9 +18,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
     {
         //$entity = Product::class;
         return $this->getEntityManager()
-            ->createQuery(
-                'SELECT p FROM AppBundle:Product p ORDER BY p.name ASC'
-            )
+            ->createQuery("SELECT p FROM AppBundle:Product p ORDER BY p.name ASC")
             ->getResult();
     }
 
@@ -75,14 +73,16 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
     public function getCategory($item)
     {
         $qb = $this->createQueryBuilder(
-            "SELECT * FROM category   c
-              LEFT JOIN product  p ON p.category_id=c.id
+            "SELECT * FROM category  c
+                LEFT JOIN product  p 
+                ON p.category_id=c.id
               WHERE c.name=$item"
         );
         return $qb->getQuery()->getResult();
     }
 
-    public function getAllProducts( $currentPage, $limit ){
+    public function getAllProducts($currentPage, $limit)
+    {
         $qb = $this->createQueryBuilder('p')
             ->select('p');
         $paginator = $this->paginate($qb, $currentPage, $limit);
@@ -90,7 +90,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
     }
 
 
-    public function getProductVenteenligne($slug, $currentPage, $limit)
+    public function getProductVenteenligne( $currentPage, $limit)
     {
         $qb = $this->createQueryBuilder('p')
             ->select('p');

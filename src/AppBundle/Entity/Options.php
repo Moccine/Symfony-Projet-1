@@ -26,7 +26,7 @@ class Options
      *
      * @ORM\Column(name="notes", type="integer")
      */
-    private $notes;
+    private $notes=0;
 
     /**
      * @var string
@@ -40,7 +40,7 @@ class Options
      *
      * @ORM\Column(name="state", type="string", length=100)
      */
-    private $state;
+    private $state='new';
 
     /**
      *

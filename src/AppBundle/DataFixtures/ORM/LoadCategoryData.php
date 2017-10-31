@@ -35,7 +35,6 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
             $category->setName($cataloguemateriel[$i]);
             $category->setType($type1);
             $category->setDescription($faker->text(200));
-            dump($this->slugfy($cataloguemateriel[$i]));
             $category->setSlug(htmlentities($this->slugfy($cataloguemateriel[$i])));
             $manager->persist($category);
             $this->addReference('categorymateriel__' . $i, $category);

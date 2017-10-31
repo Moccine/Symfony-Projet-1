@@ -1,0 +1,54 @@
+{% extends 'admin_main_layout.html.twig' %}
+{% block content %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Forms</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+        <div class="row">
+            <div class="col-lg-6">
+                {{ form_row(form.name) }}
+                {{ form_row(form.price) }}
+            </div>
+            <div class="col-lg-6">
+                <h3>Image</h3>
+                {{ form_widget(form.images) }}
+                <a href="#" id="add_images" class="btn btn-default">joindre un fichier</a>
+            </div>
+            <div class="col-lg-6">
+                {{ form_row(form.caracterisques, {'attr':{'class': 'ckeditor'}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {{ form_row(form.category) }}
+            </div>
+            <div class="col-lg-6">
+                {{ form_row(form.marque) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12"></div>
+            {{ form_row(form.description, {'attr':{'class': 'ckeditor'}}) }}
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <button type="reset" class="btn btn-block btn-warning">reset</button>
+            </div>
+            <div class="col-lg-6">
+                <button type="submit" class="btn btn-block btn-primary">valider</button>
+            </div>
+
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}
+{% block javascript_admin %}
+    <script src="{{ asset('Assets/ckeditor/ckeditor.js') }}" ></script>
+    <script src="{{ asset('Assets/js/image_form.js') }}" ></script>
+{% endblock %}

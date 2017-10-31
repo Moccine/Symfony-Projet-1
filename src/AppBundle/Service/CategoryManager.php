@@ -29,18 +29,29 @@ class CategoryManager
                                 TokenStorageInterface $tokenStorage,
                                 SessionInterface $session)
     {
-        $this->em=$entityManager;
-        $this->tokenStorage=$tokenStorage;
-        $this->user=$tokenStorage->getToken()->getUser();
-        $this->session=$session;
+        $this->em = $entityManager;
+        $this->tokenStorage = $tokenStorage;
+        $this->user = $tokenStorage->getToken()->getUser();
+        $this->session = $session;
 
     }
 
-    public  function getCategory(){
-        $repo=$this->em->getRepository(Category::class);
-        $categories=$repo->findAll();
-        dump($categories);
+    public function getCategory()
+    {
+        $repo = $this->em->getRepository(Category::class);
+        $categories = $repo->findAll();
         return $categories;
     }
 
+    public function setRepository($repository)
+    {
+        $this->repository = $repository;
+        return $this;
+    }
+
+    public function setForm($form)
+    {
+        $this->form = $form;
+        return $this;
+    }
 }

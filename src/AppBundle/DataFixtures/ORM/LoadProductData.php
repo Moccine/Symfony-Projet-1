@@ -51,6 +51,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             $key=rand(0, 25);
             $product->setCategory($cat[$key]);
             $product->setStock($faker->numberBetween(0, 50));
+            $product->setSlug($this->slugfy($product->getName()));
             $product->setAlwaysonsale($faker->boolean());
             //Ajouter des images
 
@@ -89,5 +90,21 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
         return 4;
+    }
+
+    public  function  slugfy($str){
+        $str=htmlspecialchars_decode(($str));
+        $str=str_replace('é', 'e', $str);
+        $str=str_replace('è', 'e', $str);
+        $str=str_replace('ô', 'o', $str);
+        $str=str_replace('â', 'a', $str);
+        $str=explode(" ", $str);
+        $str=array_map('trim', $str);
+        if (($key = array_search('-', $str)) !== false) {
+            unset($str[$key]);
+        }
+        $str=implode('-', $str);
+         dump($str);
+        return strtolower($str);
     }
 }

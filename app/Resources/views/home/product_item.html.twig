@@ -1,4 +1,6 @@
+
 {% for product in products %}
+    {% if product.options.state is defined and product.options.state is not null %}
 <div class="product-item large colorvariants {{ product.options.state }}">
     <div class="product-item-inside">
         <div class="product-item-info">
@@ -73,4 +75,5 @@
         </div>
     </div>
 </div>
+    {% endif %}
 {% endfor %}

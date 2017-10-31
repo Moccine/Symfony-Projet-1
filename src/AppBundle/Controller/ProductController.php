@@ -39,11 +39,13 @@ class ProductController extends Controller
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         if ($form->isSubmitted() and $form->isValid()) {
+            /**@var Product $product **/
             $product = $form->getData();
+            $product->setSlug($product->getName());
             $em->persist($product);
             $em->flush();
         }
-        return $this->render('product/addProduct.html.twig',
+        return $this->render('dashboard/catalogue/addProduct.html.twig',
             array('form' => $form->createView()));
     }
 
@@ -65,12 +67,27 @@ class ProductController extends Controller
      */
     public function quickView(Request $request)
     {
+
         return $this->render('layouts/content/modal_quik_view/quick_view.html.twig');
     }
     /**
      * @Route("/quick_view",  name="product_quickView")
      */
     public function productsByCategory($Request)
+    {
+
+    }
+    /**
+     * @Route("/product/edit/{slug}", defaults={"slug": "1"}, name="product_edit")
+     */
+    public function EditProduct($Request)
+    {
+
+    }
+    /**
+     * @Route("/product/remove/{slug}", defaults={"slug": "1"}, name="product_remove")
+     */
+    public function RemoveProduct($Request)
     {
 
     }
