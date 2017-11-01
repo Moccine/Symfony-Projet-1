@@ -30,6 +30,8 @@
 # Assets and user uploads
 /web/bundles/
 /web/uploads/
+/web/Assets/
+/web/librairies/
 
 # PHPUnit
 /app/phpunit.xml
@@ -40,3 +42,6 @@
 
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
+
+#phpstorm config
+.idea/

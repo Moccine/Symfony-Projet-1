@@ -47,3 +47,5 @@ services:
     AppBundle\Service\ApplicationManager:
         arguments: []
 
+    AppBundle\Twig\AppExtension:
+        arguments: []
