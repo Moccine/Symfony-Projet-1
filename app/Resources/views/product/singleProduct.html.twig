@@ -19,8 +19,15 @@
                                class="product-nav-prev">produit precedent
                                 <span class="product-nav-preview">
 										<span class="image">
-                                            <img src="{{ vich_uploader_asset(singleProduct.images.first, 'file') }}"
+                                            {%if singleProduct.images.first is not empty %}
+
+                                                {% set img_first= vich_uploader_asset(singleProduct.images.first, 'file') %}
+                                            {% else %}
+                                                {% set img_first= asset('Assets/images/template_images/images/products/product-1-1.jpg') %}
+                                             {% endif %}
+                                            <img src="{{ img_first }}"
                                                  alt="">
+
                                             <span class="price"> {{ currency['currency'] }} {{ singleProduct.price }}</span></span>
 										<span class="name">Black swimsuit</span>
 									</span></a>/
@@ -41,11 +48,15 @@
                         <div class="col-sm-5 col-md-3 col-lg-3">
                             <!-- Product Gallery -->
                             <div class="main-image">
-                                {% if singleProduct.images is defined %}
-                                    <img src="{{ vich_uploader_asset(singleProduct.images.first, 'file') }}"
+                                {% if singleProduct.images is not empty %}
+                                    {% set im_src= vich_uploader_asset(singleProduct.images.first, 'file') %}
+                                    {% else %}
+                                    {% set im_src= asset('Assets/images/template_images/images/products/product-1-1.jpg')%}
+                                {% endif %}
+
+                                <img src="{{im_src }}"
                                          class="zoom" alt=""
                                          data-zoom-image="images/products/large/product-gallery-1.jpg"/>
-                                {% endif %}
 
                                 <div class="dblclick-text">
                                     <span>Double click for enlarge</span>
@@ -53,7 +64,7 @@
                                 <a href="http://www.youtube.com/watch?v=qZeeMm35LXo" class="video-link">
                                     <i class="icon icon-film"></i>
                                 </a>
-                                <a href="{{ vich_uploader_asset(singleProduct.images.first, 'file') }}"
+                                <a href="{{ img_first }}"
                                    class="zoom-link"><i class="icon icon-zoomin"></i></a>
                             </div>
                             <div class="product-previews-wrapper">
