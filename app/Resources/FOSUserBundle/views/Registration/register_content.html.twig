@@ -16,43 +16,61 @@
 
                 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'),
                     'attr': {'class': 'account-create fos_user_registration_register'}}) }}
-               <div class="col-lg-12">
-                   <div class="col-lg-2">
-                       {{ form_row(form.civility) }}
-                   </div>
-                   <div class="col-lg-5">
-                       {{ form_row(form.firstname) }}
-                   </div>
-                   <div class="col-lg-5">
-                       {{ form_row(form.lastname) }}
-                   </div>
-               </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-lg-offset-3">
+                    <div class="col-lg-1">
+                        {{ form_row(form.civility, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="col-lg-5">
+                        {{ form_row(form.firstname) }}
+                    </div>
+                </div>
+                <div class="col-lg-12 col-lg-offset-3">
+                    <div class="col-lg-6">
+                        {{ form_row(form.lastname) }}
+                    </div>
+                </div>
+                <div class="col-lg-12 col-lg-offset-3">
                     <div class="col-lg-6">
                         {{ form_row(form.username) }}
                     </div>
+                </div>
+                <div class="col-lg-12 col-lg-offset-3">
                     <div class="col-lg-6">
                         {{ form_row(form.email) }}
                     </div>
                 </div>
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-lg-offset-3">
                     <div class="col-lg-6">
                         {{ form_row(form.plainPassword.first) }}
                     </div>
+                </div>
+                <div class="col-lg-12 col-lg-offset-3">
                     <div class="col-lg-6">
                         {{ form_row(form.plainPassword.second) }}
                     </div>
                 </div>
 
-                <div>
+            <div class="col-lg-12  col-lg-offset-3">
+                <div class="col-lg-6">
                     <button type="submit" class="btn btn-block">{{ 'registration.submit'|trans }} </button>
-                    <span class="required-text">* Required Fields</span></div>
-                <div class="back"> <a href="{{ path('homepage') }}">la boutique <i class="icon icon-undo"></i></a></div>
-
-                {{ form_end(form) }}
-
+                </div>
             </div>
+                <div class="col-lg-12 col-lg-offset-3">
+                    <div class=" col-lg-6">
+                        <span class="required-text">* Required Fields</span>
+
+                    </div>
+                    <div class=" col-lg-6">
+                        <div class="back btn">
+                            <a style="color: black" href="{{ path('homepage') }}">la boutique <i class="icon icon-undo"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+
         </div>
+    </div>
     </div>
 </main>
 

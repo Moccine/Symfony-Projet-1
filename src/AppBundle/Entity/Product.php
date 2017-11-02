@@ -45,9 +45,7 @@ class Product
     private $marque;
 
     /**
-     * @var float
-     * @Assert\NotBlank(message="Champ obligatoire")
-     * @ORM\Column(name="price", type="float")
+     * @ORM\OneToOne(targetEntity="Price", cascade={"persist", "remove"})
      */
     private $price;
 
@@ -97,6 +95,11 @@ class Product
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Options", cascade={"persist", "remove"})
      */
     private $options;
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Quantity", cascade={"persist", "remove"})
+     */
+    private $quantity;
 
     /**
      * @var string
@@ -153,28 +156,7 @@ class Product
         return $this->name;
     }
 
-    /**
-     * Set price
-     *
-     * @param float $price
-     * @return Product
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
 
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
 
     /**
      * Set description
@@ -449,5 +431,53 @@ class Product
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set price
+     *
+     * @param \AppBundle\Entity\Price $price
+     *
+     * @return Product
+     */
+    public function setPrice(\AppBundle\Entity\Price $price = null)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return \AppBundle\Entity\Price
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param \AppBundle\Entity\Quantity $quantity
+     *
+     * @return Product
+     */
+    public function setQuantity(\AppBundle\Entity\Quantity $quantity = null)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return \AppBundle\Entity\Quantity
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
     }
 }

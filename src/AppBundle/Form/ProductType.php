@@ -52,7 +52,9 @@ class ProductType extends AbstractType
             ->add('marque', EntityType::class, array(
                 'class' => 'AppBundle:Marque',
                 "choices" => $this->marques))
-            ->add('description', TextareaType::class);
+            ->add('description', TextareaType::class)
+            ->add('options', OptionsType::class)
+            ->add('quantity', QuantityType::class);
 
     }
 

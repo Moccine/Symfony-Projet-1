@@ -31,7 +31,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $faker= Factory::create('fr_FR');
+        $faker= Factory::create('en_EN');
         $repositoryMarque = $manager->getRepository(Marque::class);
         $marque = $repositoryMarque->findAll();
 
@@ -41,7 +41,8 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
         //Ajouter une category
         for ($i=0; $i<500; $i++){
             $product= new Product();
-            $product->setName($faker->name);
+            $str=$faker->name;
+            $product->setName($str);
             $product->setPrice($faker->randomNumber(2));
             $product->setCaracterisques($faker->text);
             $product->setVenteenligne($faker->boolean(50));
@@ -93,18 +94,24 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
     }
 
     public  function  slugfy($str){
+        $str=strtolower(($str));
         $str=htmlspecialchars_decode(($str));
         $str=str_replace('é', 'e', $str);
         $str=str_replace('è', 'e', $str);
         $str=str_replace('ô', 'o', $str);
         $str=str_replace('â', 'a', $str);
+        $str=str_replace('ê', 'e', $str);
+        $str=str_replace('ç', 'c', $str);
+        $str=str_replace('î', 'i', $str);
+        $str=str_replace('à', 'a', $str);
+        $str=str_replace('ë', 'e', $str);
+        $str=str_replace('ï', 'i', $str);
         $str=explode(" ", $str);
         $str=array_map('trim', $str);
         if (($key = array_search('-', $str)) !== false) {
             unset($str[$key]);
         }
         $str=implode('-', $str);
-         dump($str);
         return strtolower($str);
     }
 }

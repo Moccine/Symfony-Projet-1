@@ -36,11 +36,41 @@ class Options
     private $commentaire;
 
     /**
+     * Etat: new, utilisé, reconditioné
      * @var string
      *
      * @ORM\Column(name="state", type="string", length=100)
      */
     private $state='new';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ean", type="string", length=13)
+     */
+    private $ean;
+
+    /**
+     * Afficher l'état sur la fiche produit
+     * 
+     * @var boolean
+     *
+     * @ORM\Column(name="showcondition", type="boolean")
+     */
+    private $showcondition;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isbn", type="string", length=32)
+     */
+    private $isbn;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="upc", type="string", length=32)
+     */
+    private $upc;
 
     /**
      *
@@ -184,5 +214,101 @@ class Options
     public function getFavoris()
     {
         return $this->favoris;
+    }
+
+    /**
+     * Set ean
+     *
+     * @param string $ean
+     *
+     * @return Options
+     */
+    public function setEan($ean)
+    {
+        $this->ean = $ean;
+
+        return $this;
+    }
+
+    /**
+     * Get ean
+     *
+     * @return string
+     */
+    public function getEan()
+    {
+        return $this->ean;
+    }
+
+    /**
+     * Set showcondition
+     *
+     * @param boolean $showcondition
+     *
+     * @return Options
+     */
+    public function setShowcondition($showcondition)
+    {
+        $this->showcondition = $showcondition;
+
+        return $this;
+    }
+
+    /**
+     * Get showcondition
+     *
+     * @return boolean
+     */
+    public function getShowcondition()
+    {
+        return $this->showcondition;
+    }
+
+    /**
+     * Set isbn
+     *
+     * @param string $isbn
+     *
+     * @return Options
+     */
+    public function setIsbn($isbn)
+    {
+        $this->isbn = $isbn;
+
+        return $this;
+    }
+
+    /**
+     * Get isbn
+     *
+     * @return string
+     */
+    public function getIsbn()
+    {
+        return $this->isbn;
+    }
+
+    /**
+     * Set upc
+     *
+     * @param string $upc
+     *
+     * @return Options
+     */
+    public function setUpc($upc)
+    {
+        $this->upc = $upc;
+
+        return $this;
+    }
+
+    /**
+     * Get upc
+     *
+     * @return string
+     */
+    public function getUpc()
+    {
+        return $this->upc;
     }
 }
