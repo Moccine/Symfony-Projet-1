@@ -1,6 +1,6 @@
 {% extends 'admin_main_layout.html.twig' %}
 {% block content %}
-
+<div id="page-wrapper">
 <div class="row pull-right">
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Essentiel</a></li>
@@ -16,7 +16,9 @@
         <div id="home" class="tab-pane fade in active">
             <h3>Ajout simplifié</h3>
 <hr/>
-        {{ include('dashboard/catalogue/layouts/essential.html.twig') }}
+            {{ form_start(form, {'action': path('add_product'), attr: {novalidate: 'novalidate'}}) }}
+
+            {{ include('dashboard/catalogue/layouts/essential.html.twig') }}
         </div>
         <div id="menu1" class="tab-pane fade">
             <h3>Quantité</h3>
@@ -42,12 +44,20 @@
         </div>
 
     </div>
+<div class="row " id="submit-button">
+        <div class="col-lg-2">
+            <button type="reset" class="btn btn-block btn-warning">reset</button>
+        </div>
+        <div class="col-lg-6">
+            <button type="submit" class="btn btn-block btn-primary">valider</button>
+        </div>
 
-
+    {{ form_end(form) }}
+</div>
 
 {% endblock %}
 {% block javascript_admin %}
-    <script src="{{ asset('Assets/ckeditor/ckeditor.js') }}" ></script>
+    <script src="{{ asset('Assets/cckeditor/ckeditor.js') }}" ></script>
     <script src="{{ asset('Assets/js/image_form.js') }}" ></script>
     <script>
      $("#submit-button").css("z-index", 100)
