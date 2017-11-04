@@ -70,7 +70,14 @@ class Quantity
      */
     private $availablelater;
 
-
+    /**
+     * Quantity constructor.
+     * @param \DateTime $availabledate
+     */
+    public function __construct()
+    {
+        $this->availabledate = new \DateTime('now');
+    }
 
 
     /**
