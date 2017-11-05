@@ -4,6 +4,8 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,12 +27,19 @@ class OptionsType extends AbstractType
 
              )
         ))
-            ->add('commentaire')
-            ->add('state')
-            ->add('ean')
-            ->add('showcondition')
+            ->add('commentaire', TextareaType::class)
+            ->add('state', ChoiceType::class ,
+                array('label'=> 'Etat',
+                    'choices'=>array(
+                    "nouveau"=> 1,
+                    "utilisé"=>2,
+                    "reconditionné"=>3
+                )))
+            ->add('ean', TextType::class)
             ->add('isbn')
             ->add('upc')
+            ->add('showcondition')
+
             ->add('favoris');
             //->add('promo');
     }

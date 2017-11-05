@@ -1,4 +1,30 @@
 <div id="row">
-    {{ form(form.options) }}
+    <div class="row">
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.options.ean) }}
+        </div>
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.options.isbn) }}
+        </div>
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.options.upc) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.options.state) }}
+        </div>
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.options.showcondition) }}
+        </div>
+        <div class="col-xl-2 col-lg-2">
+            {{ form_row(form.options.notes) }}
+        </div>
+
+    </div>
+    <div class="row">
+        {{ form_row(form.options.commentaire, {'attr':{'class': 'ckeditor'}}) }}
+
+    </div>
 </div>
 

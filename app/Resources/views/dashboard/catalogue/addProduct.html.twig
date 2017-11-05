@@ -25,13 +25,17 @@
             <div id="home" class="tab-pane fade in active">
                 <h3>Ajout simplifié</h3>
                 <hr/>
+                {# Error #}
+                <div class="row">
+                    {{ form_errors(form) }}
+
+                </div>
                 {{ include('dashboard/catalogue/layouts/essential.html.twig') }}
             </div>
             <div id="menu1" class="tab-pane fade">
                 <h3>Quantité</h3>
                 <hr/>
                 {{ include('dashboard/catalogue/layouts/quantity.html.twig') }}
-
             </div>
             <div id="menu2" class="tab-pane fade">
                 <h3>Livraison</h3>

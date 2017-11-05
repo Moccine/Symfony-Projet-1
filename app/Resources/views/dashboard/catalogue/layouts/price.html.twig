@@ -1,3 +1,29 @@
 <div id="row">
+    <div class="row">
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.price.pricemax) }}
+
+        </div>
+    <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.price.pricemin) }}
+    </div>
+    <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.price.unitprice) }}
+    </div>
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.price.unity) }}
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.price.taxrules) }}
+        </div>
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.price.wholesaleprice) }}
+        </div>
+        <div class="col-xl-2 col-lg-3">
+            {{ form_row(form.price.currency) }}
+        </div>
+    </div>
     {{ form(form.price) }}
 </div>
