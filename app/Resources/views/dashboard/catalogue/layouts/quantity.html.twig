@@ -1,5 +1,22 @@
-<div id="page-wrapper">
-    {{ form(form.quantity.availabledate) }}
+<div id="row">
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_row(form.quantity.quantity) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_row(form.quantity.minimalquantity) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_row(form.quantity.outofstock) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            {{ form_row(form.quantity.availablenow) }}
+        </div>
+        <div class="col-lg-4">
+            {{ form_row(form.quantity.availablelater) }}
+        </div>
+    </div>
     {{ form(form.quantity) }}
-
 </div>

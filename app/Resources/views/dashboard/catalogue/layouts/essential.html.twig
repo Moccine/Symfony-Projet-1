@@ -8,9 +8,7 @@
             {{ form_widget(form.images) }}
             <a href="#" id="add_images" class="btn btn-default">joindre un fichier</a>
         </div>
-        <div class="col-lg-6">
-            {{ form_row(form.caracterisques, {'attr':{'class': 'ckeditor'}}) }}
-        </div>
+
     </div>
     <div class="row">
         <div class="col-lg-6">
@@ -20,6 +18,12 @@
             {{ form_row(form.marque) }}
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            {{ form_row(form.caracterisques, {'attr':{'class': 'ckeditor'}}) }}
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12"></div>
         {{ form_row(form.description, {'attr':{'class': 'ckeditor'}}) }}
