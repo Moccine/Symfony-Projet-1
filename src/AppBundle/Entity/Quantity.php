@@ -33,7 +33,7 @@ class Quantity
      *
      * @ORM\Column(name="minimalquantity", type="integer")
      */
-    private $minimalquantity;
+    private $minimalquantity=1;
 
     /**
      * Préférences de disponibilité
