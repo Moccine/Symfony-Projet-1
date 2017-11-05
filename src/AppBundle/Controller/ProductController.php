@@ -23,7 +23,6 @@ class ProductController extends Controller
         $session = $this->get('session');
 
 
-        dump($session->get('cart'));
         return $this->render('product/index.html.twig', array('product' => array()));
     }
 

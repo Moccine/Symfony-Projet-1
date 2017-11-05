@@ -12,7 +12,17 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
-            {{ form_row(form.quantity.availablenow) }}
+            {{ form_label(form.quantity.availabledate) }}
+            <div class="input-group date" data-provide="datepicker">
+                <div class="input-group-addon">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </div>
+                {{ form_widget(form.quantity.availabledate) }}
+
+            </div>
+
+
+
         </div>
         <div class="col-lg-4">
             {{ form_row(form.quantity.availablelater) }}
