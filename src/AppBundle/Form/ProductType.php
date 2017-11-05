@@ -37,7 +37,6 @@ class ProductType extends AbstractType
     {
 
         $builder->add('name')
-            ->add('price', MoneyType::class)
             ->add('images', CollectionType::class, array(
                 'entry_type' => ImageType::class,
                 'allow_add' => true,
@@ -54,7 +53,8 @@ class ProductType extends AbstractType
                 "choices" => $this->marques))
             ->add('description', TextareaType::class)
             ->add('options', OptionsType::class)
-            ->add('quantity', QuantityType::class);
+            ->add('quantity', QuantityType::class)
+            ->add('price', PriceType::class);
 
     }
 

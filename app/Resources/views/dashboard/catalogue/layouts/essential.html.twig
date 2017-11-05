@@ -1,22 +1,14 @@
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Forms</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
+
     <div class="row">
         <div class="col-lg-6">
             {{ form_row(form.name) }}
-            {{ form_row(form.price) }}
         </div>
         <div class="col-lg-6">
             <h3>Image</h3>
             {{ form_widget(form.images) }}
             <a href="#" id="add_images" class="btn btn-default">joindre un fichier</a>
         </div>
-        <div class="col-lg-6">
-            {{ form_row(form.caracterisques, {'attr':{'class': 'ckeditor'}}) }}
-        </div>
+
     </div>
     <div class="row">
         <div class="col-lg-6">
@@ -27,8 +19,13 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-lg-12">
+            {{ form_row(form.caracterisques, {'attr':{'class': 'ckeditor'}}) }}
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-lg-12"></div>
         {{ form_row(form.description, {'attr':{'class': 'ckeditor'}}) }}
     </div>
-
 

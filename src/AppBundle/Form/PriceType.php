@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,9 @@ class PriceType extends AbstractType
             ->add('taxrules')
             ->add('pricemax')
             ->add('wholesaleprice')
-            ->add('currency');
+            ->add('currency', ChoiceType::class, array(
+                'choices'=>array('EUR'=>'euro','USD'=>'USD','FNG'=>'FNG',)
+            ));
     }
     
     /**
