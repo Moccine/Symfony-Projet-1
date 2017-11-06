@@ -3,7 +3,9 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -38,10 +40,8 @@ class OptionsType extends AbstractType
             ->add('ean', TextType::class)
             ->add('isbn')
             ->add('upc')
-            ->add('showcondition')
-
-            ->add('favoris');
-            //->add('promo');
+            ->add('showcondition', CheckboxType::class, array('label'=>'Afficher le status'));
+        //->add('promo');
     }
     
     /**

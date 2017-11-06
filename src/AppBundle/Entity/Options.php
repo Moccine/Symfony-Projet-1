@@ -24,14 +24,14 @@ class Options
     /**
      * @var int
      *
-     * @ORM\Column(name="notes", type="integer")
+     * @ORM\Column(name="notes", type="integer", nullable=true)
      */
     private $notes=0;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="commentaire", type="string", length=255)
+     * @ORM\Column(name="commentaire", type="string", length=255, nullable=true)
      */
     private $commentaire;
 
@@ -46,7 +46,7 @@ class Options
     /**
      * @var string
      *
-     * @ORM\Column(name="ean", type="string", length=13)
+     * @ORM\Column(name="ean", type="string", length=13, nullable=true)
      */
     private $ean;
 
@@ -55,20 +55,20 @@ class Options
      * 
      * @var boolean
      *
-     * @ORM\Column(name="showcondition", type="boolean")
+     * @ORM\Column(name="showcondition", type="boolean", nullable=true)
      */
     private $showcondition;
     /**
      * @var string
      *
-     * @ORM\Column(name="isbn", type="string", length=32)
+     * @ORM\Column(name="isbn", type="string", length=32, nullable=true)
      */
     private $isbn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="upc", type="string", length=32)
+     * @ORM\Column(name="upc", type="string", length=32, nullable=true)
      */
     private $upc;
 
@@ -81,7 +81,7 @@ class Options
     /**
      * @var boolean
      *
-     * @ORM\Column(name="favoris", type="boolean")
+     * @ORM\Column(name="favoris", type="boolean", nullable=true)
      */
     private $favoris;
 
