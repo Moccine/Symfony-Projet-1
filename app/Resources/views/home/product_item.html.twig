@@ -1,79 +1,93 @@
-
 {% for product in products %}
     {% if product.options.state is defined and product.options.state is not null %}
-<div class="product-item large colorvariants {{ product.options.state }}">
-    <div class="product-item-inside">
-        <div class="product-item-info">
-            <!-- Product Photo -->
-            <div class="product-item-photo">
-                <!-- Product Label promo -->
-                <div class="product-item-label label-sale">
-                    <span>-{{ product.options.promo.discounts }} % </span></div>
-                <!-- /Product Label -->
+        <div class="product-item large colorvariants {{ product.options.state }}">
+            <div class="product-item-inside">
+                <div class="product-item-info">
+                    <!-- Product Photo -->
+                    <div class="product-item-photo">
+                        <!-- Product Label promo -->
+                        {% if product.options.promo is not null %}
+                            <div class="product-item-label label-sale">
+                                <span>-{{ product.options.promo.discounts }} % </span>
+                            </div>
+                        {% endif %}
+                        <!-- /Product Label -->
 
-                <!-- product main photo -->
-                <div class="product-item-gallery-main">
-                    <a href="{{ path('single_product', {'id': product.id}) }}">
-                        <img class="product-image-photo" src="{{ asset('Assets/images/template_images/images/products/product-16-c1.jpg') }}"
-                             alt=""></a>
-                    <a href="{{ path('product_quickView')}}" title="Quick View"
-                       class="quick-view-link quick-view-btn">
-                        <i class="icon icon-eye"></i>
-                        <span>Quick View</span></a>
-                </div>
-                <!-- /product main photo  -->
-                <!-- /product promodate -->
-                <div class="countdown-box hidden-xs">
-                    <div class="countdown-wrapper">
-                        <div class="countdown-title">Vente Flash</div>
+                        <!-- product main photo -->
+                        <div class="product-item-gallery-main">
+                            <a href="{{ path('single_product', {'id': product.id}) }}">
+                                <img class="product-image-photo"
+                                     src="{{ asset('Assets/images/template_images/images/products/product-16-c1.jpg') }}"
+                                     alt=""></a>
+                            <a href="{{ path('product_quickView') }}" title="Quick View"
+                               class="quick-view-link quick-view-btn">
+                                <i class="icon icon-eye"></i>
+                                <span>Quick View</span></a>
+                        </div>
+                        <!-- /product main photo  -->
+                        <!-- /product promodate -->
+                        <div class="countdown-box hidden-xs">
 
-                        <div class="countdown" data-promodate="{{ product.options.promo.datefin| date("Y-m-d") }}"></div>
+                            <div class="countdown-wrapper">
+                                {% if product.options.promo is not null %}
+                                    <div class="countdown-title">Vente Flash</div>
+                                    <div class="countdown"
+                                         data-promodate="{{ product.options.promo.datefin| date("Y-m-d") }}">
+                                    </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        <!-- /product promodate -->
+
+
+                        <!-- Product Actions -->
+                        <a href="{{ path('homepage') }}" title="Add to Wishlist"
+                           class="wishlist active"> <i class="icon icon-heart"></i>
+                            <span>Add to Wishlist</span>
+                        </a>
+
                     </div>
-                </div>
-                <!-- /product promodate -->
-
-
-                <!-- Product Actions -->
-                <a href="{{ path('homepage') }}" title="Add to Wishlist"
-                   class="wishlist active"> <i class="icon icon-heart"></i>
-                    <span>Add to Wishlist</span>
-                </a>
-
-            </div>
-            <!-- /Product Photo -->
-            <!-- Product Details -->
-            <div class="product-item-details">
-                <div class="product-item-name">
-                    <a title="Long sleeve overall" href="{{ path('single_product', {'id': product.id}) }}" class="product-item-link">
-                        Long sleeve overall
-                    </a>
-                </div>
-                <div class="product-item-description">
-                    {{ product.description }}
-                </div>
-                <div class="price-box">
+                    <!-- /Product Photo -->
+                    <!-- Product Details -->
+                    <div class="product-item-details">
+                        <div class="product-item-name">
+                            <a title="Long sleeve overall" href="{{ path('single_product', {'id': product.id}) }}"
+                               class="product-item-link">
+                                Long sleeve overall
+                            </a>
+                        </div>
+                        <div class="product-item-description">
+                            {{ product.description }}
+                        </div>
+                        <div class="price-box">
                     <span class="price-container">
                         <span class="price-wrapper">
-                          <span class="old-price">$190.00</span>
-                          <span class="special-price">{{ currency["symbol-currency"] }}{{ product.price }}</span>
+                              {% if product.pricesttchortcut !=0 %}
+                            <span class="old-price">$190.00</span>
+                          <span class="special-price">
+                              {{ currency["symbol-currency"] }}{{ product.pricesttchortcut }}
+                              {% endif %}
+                          </span>
                         </span>
 					</span>
+                        </div>
+                        <div class="product-item-rating">
+                            <i class="icon icon-star-fill"></i>
+                            <i class="icon icon-star-fill"></i>
+                            <i class="icon icon-star-fill"></i>
+                            <i class="icon icon-star-fill"></i>
+                            <i class="icon icon-star-fill"></i>
+                        </div>
+                        <a href="{{ path('add_to_cart', {'new_id': product.id}) }}" class="btn add-to-cart"
+                           data-product="{{ product.id }}">
+                            <i class="icon icon-cart"></i>
+                            <span>Add to Cart</span>
+                        </a>
+                    </div>
+                    <!-- /Product Details -->
                 </div>
-                <div class="product-item-rating">
-                    <i class="icon icon-star-fill"></i>
-                    <i class="icon icon-star-fill"></i>
-                    <i class="icon icon-star-fill"></i>
-                    <i class="icon icon-star-fill"></i>
-                    <i class="icon icon-star-fill"></i>
-                </div>
-                <a href="{{ path('add_to_cart', {'new_id': product.id}) }}" class="btn add-to-cart" data-product="{{ product.id }}">
-                    <i class="icon icon-cart"></i>
-                    <span>Add to Cart</span>
-                </a>
             </div>
-            <!-- /Product Details -->
         </div>
-    </div>
-</div>
     {% endif %}
 {% endfor %}

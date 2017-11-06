@@ -163,13 +163,14 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
+                                            {% if singleProduct.pricesttchortcut != 0%}
                                             <div class="price">
                                                 <span class="old-price">
                                                     <span>{{ currency['symbol-currency'] }}140.00</span>
                                                 </span>
                                                 <span class="special-price">
                                                     {{ currency['symbol-currency'] }}
-                                                    <span>{{ singleProduct.price }}</span>
+                                                    <span>{{ singleProduct.pricesttchortcut }}</span>
                                                     </span>
                                             </div>
                                             <div class="actions">
@@ -183,6 +184,7 @@
                                                     <i class="icon icon-external-link"></i>
                                                 </a>
                                             </div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -289,7 +291,7 @@
                                         </tr>
 
                                         <tr>
-                                            <td><strong>connexion et extension<strong></td>
+                                            <td><strong>connexion et extension</strong></td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -403,15 +405,20 @@
                                                 <!-- /Product Photo -->
                                                 <!-- Product Details -->
                                                 <div class="product-item-details">
-                                                    <div class="product-item-name"><a title="Boyfriend Short"
-                                                                                      href="{{ path('single_product', {'id': prod.id}) }}"
-                                                                                      class="product-item-link"> {{ prod.name |slice(0, 20) }}</a>
+                                                    <div class="product-item-name">
+                                                        <a title="Boyfriend Short"
+                                                             href="{{ path('single_product', {'id': prod.id}) }}"
+                                                                 class="product-item-link"> {{ prod.name |slice(0, 20) }}</a>
                                                     </div>
                                                     <div class="product-item-description">{{ prod.description |slice(0, 100) }}
                                                     </div>
-                                                    <div class="price-box"> <span class="price-container"> <span
-                                                                    class="price-wrapper"><span
-                                                                        class="special-price">{{ currency['symbol-currency'] }} {{ prod.price }}</span> </span>
+                                                    <div class="price-box">
+                                                        <span class="price-container">
+                                                            <span class="price-wrapper">
+                                                                <span class="special-price">
+                                                                    {{ currency['symbol-currency'] }} {{ prod.pricesttchortcut }}
+                                                                </span>
+                                                            </span>
 												</span>
                                                     </div>
                                                     <!-- Product Actions -->

@@ -45,7 +45,7 @@ class Promo
     /**
      * @var int
      *
-     * @ORM\Column(name="discounts", type="integer")
+     * @ORM\Column(name="discounts", type="integer", nullable=true)
      */
     private $discounts;
 
