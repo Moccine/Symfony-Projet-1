@@ -36,6 +36,39 @@ class Slider
      * @ORM\Column(name="datahref", type="string", length=255)
      */
     private $datahref;
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="datathumb", type="boolean")
+     */
+    private $datathumb=true;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="datathumbwitdth", type="integer")
+     */
+    private $datathumbwitdth=230;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="datathumbheight", type="integer")
+     */
+    private $datathumbheight=100;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="datatarget", type="string")
+     */
+    private $datatarget='_blank';
+
+
+
+
+
+
+
 
     /**
      * @var string
@@ -146,5 +179,101 @@ class Slider
     public function getTexte()
     {
         return $this->texte;
+    }
+
+    /**
+     * Set datathumb
+     *
+     * @param boolean $datathumb
+     *
+     * @return Slider
+     */
+    public function setDatathumb($datathumb)
+    {
+        $this->datathumb = $datathumb;
+
+        return $this;
+    }
+
+    /**
+     * Get datathumb
+     *
+     * @return boolean
+     */
+    public function getDatathumb()
+    {
+        return $this->datathumb;
+    }
+
+    /**
+     * Set datathumbwitdth
+     *
+     * @param integer $datathumbwitdth
+     *
+     * @return Slider
+     */
+    public function setDatathumbwitdth($datathumbwitdth)
+    {
+        $this->datathumbwitdth = $datathumbwitdth;
+
+        return $this;
+    }
+
+    /**
+     * Get datathumbwitdth
+     *
+     * @return integer
+     */
+    public function getDatathumbwitdth()
+    {
+        return $this->datathumbwitdth;
+    }
+
+    /**
+     * Set datathumbheight
+     *
+     * @param integer $datathumbheight
+     *
+     * @return Slider
+     */
+    public function setDatathumbheight($datathumbheight)
+    {
+        $this->datathumbheight = $datathumbheight;
+
+        return $this;
+    }
+
+    /**
+     * Get datathumbheight
+     *
+     * @return integer
+     */
+    public function getDatathumbheight()
+    {
+        return $this->datathumbheight;
+    }
+
+    /**
+     * Set datatarget
+     *
+     * @param string $datatarget
+     *
+     * @return Slider
+     */
+    public function setDatatarget($datatarget)
+    {
+        $this->datatarget = $datatarget;
+
+        return $this;
+    }
+
+    /**
+     * Get datatarget
+     *
+     * @return string
+     */
+    public function getDatatarget()
+    {
+        return $this->datatarget;
     }
 }

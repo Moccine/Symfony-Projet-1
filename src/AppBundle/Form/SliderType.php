@@ -3,7 +3,10 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,12 +18,12 @@ class SliderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('datahref')
-            ->add('texte', CollectionType::class, array(
-                'entry_type'=> TexteType::class,
-                'allow_add'=>true,
-                'allow_delete'=>true
-            ))
-                    ->add('figure', ImageType::class);
+            ->add('texte', TexteType::class)
+            ->add('datatarget', TextType::class, array('label'=>'Cible '))
+            ->add('datathumbheight', IntegerType::class, array('label'=>'Hauteur'))
+            ->add('datathumbwitdth', IntegerType::class, array('label'=>'Longueur'))
+            ->add('datathumb', CheckboxType::class, array('label'=>'Afficher les miniature'))
+             ->add('figure', ImageType::class);
     }
     
     /**
