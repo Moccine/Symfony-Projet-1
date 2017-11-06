@@ -45,8 +45,8 @@
                             <tr class=" {{ cycle(['odd', 'even'], loop.index0) }}">
                                 <td>Aimage</td>
                                 <td><a href="{{ path('single_product', {"id": product.id}) }}"> {{ product.name }}</a></td>
-                                <td>{{ product.price }} {{ currency }}</td>
-                                <td class="center">{{ product.stock }}</td>
+                                <td>{{ product.priceshortcut }} {{ currency }}</td>
+                                <td class="center">{{ product.quantityshortcut }}</td>
                                 <td class="center"><a href="{{ path('product_edit', {'slug': product.slug}) }}" >
                                         <i class="fa fa-edit"></i>
                                     </a>
