@@ -24,14 +24,14 @@ class Price
     /**
      * @var float
      *
-     * @ORM\Column(name="pricemin", type="float")
+     * @ORM\Column(name="pricemin", type="float", nullable=true)
      */
     private $pricemin;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="unitprice", type="float")
+     * @ORM\Column(name="unitprice", type="float", nullable=true)
      */
     private $unitprice;
 
@@ -39,27 +39,27 @@ class Price
      * Type d'unité: kg/litre
      * @var string
      *
-     * @ORM\Column(name="unity", type="string")
+     * @ORM\Column(name="unity", type="string", nullable=true)
      */
     private $unity;
     /**
      * @var integer
      *
-     * @ORM\Column(name="taxrules", type="integer")
+     * @ORM\Column(name="taxrules", type="integer", nullable=true)
      */
     private $taxrules;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="pricemax", type="float")
+     * @ORM\Column(name="pricemax", type="float", nullable=true)
      */
     private $pricemax;
     /**
      * Prix d'achat
      * @var float
      *
-     * @ORM\Column(name="wholesaleprice", type="float")
+     * @ORM\Column(name="wholesaleprice", type="float", nullable=true)
      */
     private $wholesaleprice;
 

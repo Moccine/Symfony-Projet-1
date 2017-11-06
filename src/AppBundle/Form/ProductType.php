@@ -6,9 +6,12 @@ use AppBundle\Service\ProductManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
@@ -37,14 +40,14 @@ class ProductType extends AbstractType
     {
 
         $builder->add('name')
-            ->add('images', CollectionType::class, array(
+                 ->add('images', CollectionType::class, array(
                 'entry_type' => ImageType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
             ))
-            ->add('caracterisques', TextareaType::class)
-            ->add('category', EntityType::class, array(
+                ->add('caracterisques', TextareaType::class)
+                 ->add('category', EntityType::class, array(
                 'class' => 'AppBundle:Category',
                 "choices" => $this->category
             ))
@@ -54,7 +57,15 @@ class ProductType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('options', OptionsType::class)
             ->add('quantity', QuantityType::class)
-            ->add('price', PriceType::class);
+            ->add('price', PriceType::class)
+            ->add('priceshortcut', MoneyType::class, array('label'=>'Prix HT'))
+            ->add('pricesttchortcut', MoneyType::class, array('label'=>'Prix TTC'))
+            ->add('reference', TextType::class, array('label'=>'Reference'))
+            ->add('quantityshortcut', IntegerType::class, array('label'=>'Quantité'))
+            ->add('taxrulegroup', ChoiceType::class, array('label'=>'Règle de taxe ',
+                'choices'=>array(
+
+                )));
 
     }
 

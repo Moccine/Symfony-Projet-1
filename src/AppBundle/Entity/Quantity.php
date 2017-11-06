@@ -24,14 +24,14 @@ class Quantity
     /**
      * @var int
      *
-     * @ORM\Column(name="quantity", type="integer")
+     * @ORM\Column(name="quantity", type="integer", nullable=true)
      */
     private $quantity;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="minimalquantity", type="integer")
+     * @ORM\Column(name="minimalquantity", type="integer", nullable=true)
      */
     private $minimalquantity=1;
 
@@ -42,7 +42,7 @@ class Quantity
      * 3- Utiliser le comportement par défaut (Refuser les commandes)
      * @var int
      *
-     * @ORM\Column(name="outofstock", type="integer")
+     * @ORM\Column(name="outofstock", type="integer", nullable=true)
      */
     private $outofstock;
     /**
@@ -50,14 +50,14 @@ class Quantity
      *
      * @var string
      *
-     * @ORM\Column(name="availablenow", type="string")
+     * @ORM\Column(name="availablenow", type="string", nullable=true)
      */
     private $availablenow;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="availabledate", type="datetimetz")
+     * @ORM\Column(name="availabledate", type="datetimetz", nullable=true)
      */
     private $availabledate;
 
@@ -66,7 +66,7 @@ class Quantity
      *
      * @var string
      *
-     * @ORM\Column(name="availablelater", type="string", length=255)
+     * @ORM\Column(name="availablelater", type="string", length=255, nullable=true)
      */
     private $availablelater;
 

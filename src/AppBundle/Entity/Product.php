@@ -52,7 +52,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -66,21 +66,21 @@ class Product
     /**
      * @var boolean
      *
-     * @ORM\Column(name="alwaysonsale", type="boolean")
+     * @ORM\Column(name="alwaysonsale", type="boolean", nullable=true)
      */
     private $alwaysonsale;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="stock", type="integer")
+     * @ORM\Column(name="stock", type="integer", nullable=true)
      */
     private $stock;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="caracterisques", type="text")
+     * @ORM\Column(name="caracterisques", type="text",  nullable=true)
      */
     private $caracterisques;
     /**
@@ -95,6 +95,32 @@ class Product
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Options", cascade={"persist", "remove"})
      */
     private $options;
+    /**
+     * @var integer
+     * @ORM\Column(name="quantityshortcut", type="integer", nullable=true)
+     */
+    private $quantityshortcut;
+
+    /**
+     * @var float
+     * @ORM\Column(name="priceshortcut", type="float",  nullable=true)
+     */
+    private $priceshortcut;
+    /**
+     * @var float
+     * @ORM\Column(name="pricesttchortcut", type="float", nullable=true)
+     */
+    private $pricesttchortcut;
+    /**
+     * @var string
+     * @ORM\Column(name="reference", type="string",  nullable=true)
+     */
+    private $reference;
+    /**availablenow
+     * @var string
+     * @ORM\Column(name="taxrulegroup", type="string",  nullable=true)
+     */
+    private $taxrulegroup;
     /**
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Quantity", cascade={"persist", "remove"})
@@ -479,5 +505,125 @@ class Product
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * Set quantityshortcut
+     *
+     * @param integer $quantityshortcut
+     *
+     * @return Product
+     */
+    public function setQuantityshortcut($quantityshortcut)
+    {
+        $this->quantityshortcut = $quantityshortcut;
+
+        return $this;
+    }
+
+    /**
+     * Get quantityshortcut
+     *
+     * @return integer
+     */
+    public function getQuantityshortcut()
+    {
+        return $this->quantityshortcut;
+    }
+
+    /**
+     * Set priceshortcut
+     *
+     * @param float $priceshortcut
+     *
+     * @return Product
+     */
+    public function setPriceshortcut($priceshortcut)
+    {
+        $this->priceshortcut = $priceshortcut;
+
+        return $this;
+    }
+
+    /**
+     * Get priceshortcut
+     *
+     * @return float
+     */
+    public function getPriceshortcut()
+    {
+        return $this->priceshortcut;
+    }
+
+    /**
+     * Set pricesttchortcut
+     *
+     * @param float $pricesttchortcut
+     *
+     * @return Product
+     */
+    public function setPricesttchortcut($pricesttchortcut)
+    {
+        $this->pricesttchortcut = $pricesttchortcut;
+
+        return $this;
+    }
+
+    /**
+     * Get pricesttchortcut
+     *
+     * @return float
+     */
+    public function getPricesttchortcut()
+    {
+        return $this->pricesttchortcut;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     *
+     * @return Product
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set taxrulegroup
+     *
+     * @param string $taxrulegroup
+     *
+     * @return Product
+     */
+    public function setTaxrulegroup($taxrulegroup)
+    {
+        $this->taxrulegroup = $taxrulegroup;
+
+        return $this;
+    }
+
+    /**
+     * Get taxrulegroup
+     *
+     * @return string
+     */
+    public function getTaxrulegroup()
+    {
+        return $this->taxrulegroup;
     }
 }

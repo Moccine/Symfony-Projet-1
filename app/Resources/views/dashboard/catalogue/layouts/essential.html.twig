@@ -1,31 +1,68 @@
 
     <div class="row">
         <div class="col-lg-6">
-            {{ form_row(form.name) }}
+            <div class="row">
+                {{ form_row(form.name) }}
+            </div><!--fin row name -->
+
+        <div class="row">
+            <div class="col-lg-6">
+                {{ form_row(form.category) }}
+            </div>
+            <div class="col-lg-6">
+                {{ form_row(form.marque) }}
+            </div>
+        </div><!--end row category and marque -->
+            <div class="row">
+                <div class="col-lg-6">
+                {{ form_row(form.priceshortcut) }}
+                </div>
+                <div class="col-lg-6">
+                {{ form_row(form.pricesttchortcut) }}
+                </div>
+            </div><!--end row price shortcut -->
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_row(form.quantityshortcut) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_row(form.reference) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_row(form.taxrulegroup) }}
+                </div>
+            </div><!--end row price shortcut -->
         </div>
         <div class="col-lg-6">
             <h3>Image</h3>
             {{ form_widget(form.images) }}
             <a href="#" id="add_images" class="btn btn-default">joindre un fichier</a>
-        </div>
+        </div><!-- fin row images -->
 
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-            {{ form_row(form.category) }}
-        </div>
-        <div class="col-lg-6">
-            {{ form_row(form.marque) }}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            {{ form_row(form.caracterisques, {'attr':{'class': 'ckeditor'}}) }}
-        </div>
-    </div>
+
 
     <div class="row">
-        <div class="col-lg-12">
-        {{ form_row(form.description, {'attr':{'class': 'ckeditor'}}) }}
-    </div></div>
+        <div class="row pull-right">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a data-toggle="tab" href="#desc1">Caracterisques</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#desc2">Description</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div id="desc1" class="tab-pane fade in active">
+                    <div class="col-lg-12">
+                        {{ form_row(form.caracterisques, {'attr':{'class': 'ckeditor'}}) }}
+                    </div>                </div>
+                <div id="desc2" class="tab-pane fade">
+                    <div class="col-lg-12">
+                        {{ form_row(form.description, {'attr':{'class': 'ckeditor'}}) }}
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
 
