@@ -1,0 +1,58 @@
+{% extends 'admin_main_layout.html.twig' %}
+{% block content %}
+    <div id="page-wrapper">
+        {{ form_start(form, {'action': path('add_slider'), 'method': 'POST'}) }}
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="col-lg-6">
+                    {{ form_row(form.figure.filename) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_row(form.figure.alt) }}
+                </div>
+                <div class="col-lg-12">
+                    {{ form_row(form.figure.file) }}
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <h3>Texte</h3>
+            <div class="col-lg-6">
+                {{ form_widget(form.texte) }}
+                <a href="#" class="btn" id="add-another-email">Ajouter un texte</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{ form_row(form.datathumbheight) }}
+                    </div>
+                    <div class="col-lg-6">
+                        {{ form_row(form.datathumbwitdth) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{ form_row(form.datathumb) }}
+                    </div>
+                    <div class="col-lg-6">
+                        {{ form_row(form.datatarget) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        {{ form_row(form.datahref) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">valider</button>
+        {{ form_row(form._token) }}
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
+{% block javascript_admin %}
+    <script src=" {{ asset('Assets/js/slider_form.js') }}"
+{% endblock %}

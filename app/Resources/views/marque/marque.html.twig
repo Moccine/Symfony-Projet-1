@@ -216,15 +216,18 @@
                                             <div class="product-item-description">{{ product.description }}
                                             </div>
                                             <div class="price-box">
+                                                {% if  product.pricesttchortcut != 0%}{# si prix est defini afficher le prix#}
                                                 <span class="price-container">
                                                     <span class="price-wrapper">
-                                                        <span class="old-price">{{ currency['symbol-currency'] }}{{ product.price }}</span>
-                                                        <span class="special-price">{{ currency['symbol-currency'] }}{{ product.price }}</span>
+                                                        <span class="old-price">{{ currency['symbol-currency'] }}{{ product.pricesttchortcut }}</span>
+                                                        <span class="special-price">{{ currency['symbol-currency'] }}{{ product.pricesttchortcut }}</span>
                                                     </span>
 												</span>
+                                                {% endif %}
                                             </div>
                                             <!-- Product Actions -->
                                             <div class="product-item-actions">
+                                                {% if  product.pricesttchortcut != 0%}{# si prix est defini afficher le prix#}
                                                 <div class="actions-primary">
                                                     <button class="btn btn-sm btn-invert add-to-cart"
                                                             data-product="789123">
@@ -232,6 +235,7 @@
                                                         <span>Ajouter</span>
                                                     </button>
                                                 </div>
+                                                {% endif %}
                                             </div>
                                             <!-- /Product Actions -->
                                         </div>

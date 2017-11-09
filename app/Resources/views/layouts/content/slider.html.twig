@@ -19,6 +19,9 @@
                     <div class="text2-5 animate" data-animate="hinge" data-delay="2000"> OFF</div>
                 </div>
             </div>
+            {% if slides is not empty  %}
+                {{ dump(slides) }}
+            {% endif %}
             <div class="swiper-slide"
                  data-thumb="{{ asset('Assets/images/template_images/images/slider/slide-01-thumb.png') }}">
                 <div class="wrapper">

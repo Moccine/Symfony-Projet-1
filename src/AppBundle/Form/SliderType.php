@@ -2,8 +2,14 @@
 
 namespace AppBundle\Form;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,11 +22,19 @@ class SliderType extends AbstractType
     {
         $builder->add('datahref')
             ->add('texte', CollectionType::class, array(
-                'entry_type'=> TexteType::class,
-                'allow_add'=>true,
-                'allow_delete'=>true
+                'entry_type' => TexteType::class,
+                'entry_options' => array('label' => false),
+                'allow_add' => true,
+                'delete_empty'=>true,
+                'allow_delete'=>true,
+                'error_bubbling' => true,
+
             ))
-                    ->add('figure', ImageType::class);
+            ->add('datatarget', UrlType::class, array('label'=>'Cible '))
+            ->add('datathumbheight', IntegerType::class, array('label'=>'Hauteur'))
+            ->add('datathumbwitdth', IntegerType::class, array('label'=>'Longueur'))
+            ->add('datathumb', CheckboxType::class, array('label'=>'Afficher les miniature'))
+             ->add('figure', ImageType::class);
     }
     
     /**

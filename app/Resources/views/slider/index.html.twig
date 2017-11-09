@@ -1,0 +1,35 @@
+<div class="mainSlider" data-thumb="true" data-thumb-width="230" data-thumb-height="100">
+    <div class="sliderLoader">Loading...</div>
+    <!-- Slider main container -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            {% if slides is not empty  %}
+                {% for slide in slides %}
+            <div class="swiper-slide"
+                 data-thumb="{{ asset('Assets/images/template_images/images/slider/slide-02-thumb.png') }}"
+                 data-href="#" data-target="_blank">
+                <!-- _blank or _self ( _self is default )-->
+                <div class="wrapper">
+                    <figure>
+                        <img  src="{{ vich_uploader_asset(slide.figure, 'file') }}" alt="">
+                    </figure>
+                    {% for texte in slide.texte %}
+                    <div class="text2-1 animate" data-animate="flipInY" data-delay="0"> {{ texte.name }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+        </div>
+        <!-- pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- pagination thumbs -->
+        <div class="swiper-pagination-thumbs">
+            <div class="thumbs-wrapper">
+                <div class="thumbs"></div>
+            </div>
+        </div>
+    </div>
+</div>

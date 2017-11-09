@@ -6,6 +6,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Marque;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Promo;
+use AppBundle\Entity\Slider;
 use AppBundle\Entity\Venteenligne;
 use AppBundle\Service\ProductManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -69,6 +70,16 @@ class HomeController extends Controller
         $marque=$repoMarque->findAll();
         return $this->render('home/cataloguemateriel.html.twig',
             array('marque'=>$marque
+            )        );
+    }
+    /**
+     * @Route("/slider_item", name="slider_item")
+     */
+    public  function  sliderItemsAction(){
+        $repoMarque=$this->getDoctrine()->getRepository(Slider::class);
+        $slides=$repoMarque->findAll();
+        return $this->render('slider/index.html.twig',
+            array('slides'=>$slides
             )        );
     }
 

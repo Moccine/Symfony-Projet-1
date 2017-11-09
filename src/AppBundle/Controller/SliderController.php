@@ -29,10 +29,11 @@ class SliderController extends Controller
 
         if ($form->isSubmitted() and $form->isValid()){
           $em=$this->getDoctrine()->getManager();
+          dump($form->getData());
           $em->persist($form->getData());
           $em->flush();
       }
-        return $this->render('slider/add.html.twig',
+        return $this->render('dashboard/modules/slider/addslider.html.twig',
             array(
                 'form'=>$form->createView()
             ));

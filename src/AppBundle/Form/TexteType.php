@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,12 +18,26 @@ class TexteType extends AbstractType
         $builder->add('name')
             ->add('textFontSize')
             ->add('textFontLine')
-            ->add('textFontFamily')
-            ->add('textFontColor')
+            ->add('textFontFamily', ChoiceType::class)
+            ->add('textFontColor', ChoiceType::class)
             ->add('textYPos')
-            ->add('textAnimation')
-            ->add('textAnimationDelay')
-            ->add('textClass');
+            ->add('textAnimation', ChoiceType::class,
+                array(
+                    'label'=>'type d\'animation',
+                    'choices'=>$this->getTexAnimation()
+                ))
+            ->add('textAnimationDelay', ChoiceType::class ,
+                array(
+                    'label'=>'Delay after previous text animation in ms',
+                    'choices'=>range(0,30)
+                ))
+            ->add('textClass')
+            ->add('textXPos', TextType::class, array(
+                'label'=>'	X (vertical) position in % (0...100, center, left, right)'
+            ))
+            ->add('textYPos', TextType::class, array(
+                'label'=>'	Y (vertical) position in % (0...100, center)'
+            ));
     }
     
     /**
