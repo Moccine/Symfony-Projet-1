@@ -2,7 +2,8 @@
     <div class="block fullwidth full-nopad bottom-space">
         <div class="container">
             <!-- Main Slider -->
-            {{ include('@layouts_twig/content/slider.html.twig') }} <!-- /Main Slider -->
+            {#{{ include('@layouts_twig/content/slider.html.twig') }} <!-- /Main Slider -->#}
+            {{ render(controller('AppBundle:Home:sliderItems')) }}
         </div>
     </div>
 

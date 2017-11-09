@@ -29,6 +29,7 @@ class SliderController extends Controller
 
         if ($form->isSubmitted() and $form->isValid()){
           $em=$this->getDoctrine()->getManager();
+          dump($form->getData());
           $em->persist($form->getData());
           $em->flush();
       }

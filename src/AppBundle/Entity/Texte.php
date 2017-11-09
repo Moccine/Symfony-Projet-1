@@ -29,59 +29,71 @@ class Texte
      */
     private $name;
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="textFontSize", type="string", length=255)
+     * @ORM\Column(name="textFontSize", type="float", nullable=true)
      */
-    private $textFontSize;
+    private $textFontSize=7.8;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="textFontLine", type="float", nullable=true)
+     */
+    private $textFontLine=1;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="textFontLine", type="string", length=255)
+     * @ORM\Column(name="textFontFamily", type="string", length=100, nullable=true)
      */
-    private $textFontLine;
+    private $textFontFamily="Roboto,sans-serif";
 
     /**
      * @var string
      *
-     * @ORM\Column(name="textFontFamily", type="string", length=255)
+     * @ORM\Column(name="textFontColor", type="string", nullable=true)
      */
-    private $textFontFamily;
+    private $textFontColor="#333745";
 
     /**
      * @var string
      *
-     * @ORM\Column(name="textFontColor", type="string", length=255)
+     * @ORM\Column(name="$textYPos", type="string", length=100, nullable=true)
      */
-    private $textFontColor;
+    private $textYPos="1";
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="$textXPos", type="string", length=100, nullable=true)
+     */
+    private $textXPos="1";
 
     /**
      * @var string
      *
-     * @ORM\Column(name="$textYPos", type="string", length=255)
-     */
-    private $textYPos;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="textAnimation", type="string", length=255)
+     * @ORM\Column(name="textAnimation", type="string", length=255, nullable=true)
      */
     private $textAnimation;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="textAnimationDelay", type="integer")
+     * @ORM\Column(name="textAnimationDelay", type="integer", nullable=true)
      */
-    private $textAnimationDelay;
+    private $textAnimationDelay=1000;
     /**
      * @var string
      *
-     * @ORM\Column(name="textClass", type="string", length=255)
+     * @ORM\Column(name="textClass", type="string", length=255, nullable=true)
      */
-    private $textClass;
+    private $textClass="text animate";
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="textotherstyle", type="string", length=255, nullable=true)
+     */
+    private $textotherstyle="uppercase";
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Slider", inversedBy="texte", cascade={"persist", "remove"})
@@ -338,5 +350,53 @@ class Texte
     public function getSlider()
     {
         return $this->slider;
+    }
+
+    /**
+     * Set textXPos
+     *
+     * @param string $textXPos
+     *
+     * @return Texte
+     */
+    public function setTextXPos($textXPos)
+    {
+        $this->textXPos = $textXPos;
+
+        return $this;
+    }
+
+    /**
+     * Get textXPos
+     *
+     * @return string
+     */
+    public function getTextXPos()
+    {
+        return $this->textXPos;
+    }
+
+    /**
+     * Set textotherstyle
+     *
+     * @param string $textotherstyle
+     *
+     * @return Texte
+     */
+    public function setTextotherstyle($textotherstyle)
+    {
+        $this->textotherstyle = $textotherstyle;
+
+        return $this;
+    }
+
+    /**
+     * Get textotherstyle
+     *
+     * @return string
+     */
+    public function getTextotherstyle()
+    {
+        return $this->textotherstyle;
     }
 }
