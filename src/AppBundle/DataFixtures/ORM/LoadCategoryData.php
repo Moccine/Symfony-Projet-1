@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: GLOBAL SERVICE PLUS
- * Date: 19/07/2017
- * Time: 21:44
- */
 
 namespace AppBundle\DataFixtures\ORM;
 
